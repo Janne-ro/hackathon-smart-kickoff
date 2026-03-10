@@ -2,6 +2,24 @@
 
 Whether you're joining the Agora + Anam + Thymia hackathon or just exploring conversational AI for the first time, this guide gets you from zero to a working AI agent you can talk to. The entire setup takes one prompt to an AI coding assistant.
 
+## Contents
+
+- [What You'll Build](#what-youll-build)
+- [Three Ways to Build](#three-ways-to-build)
+  - [Terminal AI Coding Agents](#terminal-ai-coding-agents-local-most-capable)
+  - [Lovable](#lovable-browser-zero-local-setup)
+  - [v0](#v0-browser-vercel-hosted)
+- [What You'll Need](#what-youll-need)
+  - [Agora Credentials](#agora-credentials-always-required)
+  - [Pipeline Mode](#fastest-path-pipeline-mode-3-values)
+  - [Inline Config](#full-control-inline-config)
+- [How It Works](#how-it-works)
+- [Adding a Video Avatar with Anam](#adding-a-video-avatar-with-anam)
+- [Adding Voice Biomarkers with Thymia](#adding-voice-biomarkers-with-thymia)
+- [Hackathon Ideas](#hackathon-ideas)
+- [Terminal Basics](#terminal-basics-if-youre-new)
+- [Resources](#resources)
+
 ## What You'll Build
 
 A real-time voice AI agent running in your browser. You speak, the agent listens, thinks, and talks back — with sub-second latency, interruption handling, and live transcription. If you want to go further, add a video avatar face (powered by Anam) or real-time voice biomarker analysis (powered by Thymia).
