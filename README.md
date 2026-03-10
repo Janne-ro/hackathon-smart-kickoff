@@ -11,9 +11,9 @@ Welcome to the Preply x Agora Hackathon in Barcelona! Join us for two days of bu
 
 ---
 
-## 📖 **[Coding Guide (for AI and humans)](docs/guide.md)**
+## 📖 **Coding Guide: for AI and humans**
 
-Everything you need to get a voice or video AI agent running in minutes — setup with AI coding assistants (Claude Code, Codex CLI, Gemini CLI, and more), API credentials, Anam avatars, Thymia biomarkers, and vibe coding platforms (Lovable, v0).
+Everything you need to get a voice or video AI agent running in minutes — setup with AI coding assistants (Claude Code, Codex CLI, Gemini CLI, and more), API credentials, Anam avatars, Thymia biomarkers, and vibe coding platforms (Lovable, v0). **[Read the guide](docs/guide.md)**
 
 ---
 
