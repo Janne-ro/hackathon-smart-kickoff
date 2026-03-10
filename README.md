@@ -167,7 +167,7 @@ Projects will be evaluated based on:
 
 ## ❓ **Need Help?**
 
-For any questions, reach out to [**Hackathon Organizers (Preply & Agora)**](mailto:hackathon@preply.com) or join our Discord channel at [hackathon-support](https://discord.gg/agora-hackathon).
+For any questions, reach out to [**Hackathon Organizers (Preply & Agora)**](mailto:hackathon@preply.com) or join our Discord channel at [hackathon-support](https://discord.gg/kS7etQFKC).
 
 
 For urgent matters during the event, reach out to the organizers directly at the venue.
