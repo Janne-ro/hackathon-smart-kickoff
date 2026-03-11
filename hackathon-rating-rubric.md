@@ -59,7 +59,7 @@ All submissions **must** integrate **at least one** of the following Agora produ
 
 - Use of multiple Agora products together
 
-- Creative use of OpenAI or AWS services
+- Language learning increased engagement
 
 ---
 

@@ -70,7 +70,7 @@ Go above and beyond for extra credit:
 - ⭐ Integration of Anam video avatars for face-to-face language practice
 - ⭐ Integration of Thymia voice biomarkers to detect learner stress, fatigue, or frustration
 - ⭐ Use of multiple Agora products together
-- ⭐ Creative use of OpenAI or AWS services
+- ⭐ Language learning increased engagement
 
 ---
 
