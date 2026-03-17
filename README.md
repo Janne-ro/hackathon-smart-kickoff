@@ -86,7 +86,7 @@ Build AI-powered language learning experiences using Agora's Conversational AI E
 
 ### Recommended Technologies
 
-The following Agora products are available to all teams. Integrating partner technologies earns bonus points (see [Judging Criteria](#judging-criteria)).
+The following Agora products are available to all teams. Integrating Agora ConvoAI earns a bonus point (see [Judging Criteria](#judging-criteria)).
 
 | Technology                  | Description                                             | Documentation                                                                |
 | --------------------------- | ------------------------------------------------------- | ---------------------------------------------------------------------------- |
@@ -105,9 +105,9 @@ The following Agora products are available to all teams. Integrating partner tec
 
 ### Bonus Point Opportunities
 
-- ⭐ **Agora ConvoAI** — Integrate Agora Conversational AI for up to +1 bonus point
-- ⭐ **Thymia Voice Biomarkers** — Integrate Thymia's real-time voice biomarker analysis for up to +1 bonus point
-- ⭐ **Anam Video Avatars** — Integrate Anam's video avatar rendering for up to +1 bonus point
+- ⭐ **Agora ConvoAI Integration** — Integrate Agora Conversational AI for up to +1 bonus point
+
+Teams are also encouraged to integrate **Anam Video Avatars** and **Thymia Voice Biomarkers** to enhance their projects — these won't earn separate bonus points but can strengthen your scores across all categories.
 
 ---
 
@@ -224,12 +224,9 @@ Each judge scores every category 1-5. All categories are weighted equally at 20%
 | **Presentation & Demo** | Submitted and presented but no live demo | Live demo, great pitch ready for YCombinator |
 | **Quality** | Barely working, clunky UX | Well thought-out UX, no bugs, good quality project. Includes AI Craftsmanship (`HOW_WE_BUILT.md`) |
 
-**Bonus Points** (up to +1 each):
-- ⭐ **Agora ConvoAI** — Integrate Agora Conversational AI
-- ⭐ **Thymia** — Integrate real-time voice biomarker analysis
-- ⭐ **Anam** — Integrate video avatar rendering
+⭐ **Bonus: Agora ConvoAI Integration** (up to +1) — Teams that integrate Agora Conversational AI earn up to 1 bonus point.
 
-**Maximum score: 8** (5 base + up to 3 bonus)
+**Maximum score: 6** (5 base + 1 Agora bonus)
 
 ### Judging Panel
 

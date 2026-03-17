@@ -6,9 +6,9 @@
 
 ## Scoring Sheet
 
-| Name           | Technology Use (20%) | Relevancy (20%) | Product Scope (20%) | Presentation & Demo (20%) | Quality (20%) | Agora Bonus | Thymia Bonus | Anam Bonus | Total Score | Notes                      |
-| -------------- | -------------------- | ---------------- | ------------------- | ------------------------- | ------------- | ----------- | ------------ | ---------- | ----------- | -------------------------- |
-| [Project Name] | \_\_ / 5             | \_\_ / 5         | \_\_ / 5            | \_\_ / 5                  | \_\_ / 5      | +\_\_ (0-1) | +\_\_ (0-1)  | +\_\_ (0-1)| \_\_        | [Brief overall assessment] |
+| Name           | Technology Use (20%) | Relevancy (20%) | Product Scope (20%) | Presentation & Demo (20%) | Quality (20%) | Agora ConvoAI Bonus | Total Score | Notes                      |
+| -------------- | -------------------- | ---------------- | ------------------- | ------------------------- | ------------- | -------------------- | ----------- | -------------------------- |
+| [Project Name] | \_\_ / 5             | \_\_ / 5         | \_\_ / 5            | \_\_ / 5                  | \_\_ / 5      | +\_\_ (0-1)          | \_\_        | [Brief overall assessment] |
 
 ## Scoring Details
 
@@ -97,34 +97,20 @@ Overall project quality including UX, bugs, and AI craftsmanship (`HOW_WE_BUILT.
 
 -
 
-## Bonus Points (up to +1 each)
+## Bonus: Agora ConvoAI Integration (up to +1)
 
-### Agora ConvoAI
+_Teams that integrate Agora Conversational AI earn up to 1 bonus point._
 
-**Bonus: +\_\_ / 1.0**
+**Bonus Score: +\_\_ / 1.0**
 
 **Evaluation Notes:**
 [Provide detailed feedback on Agora ConvoAI integration]
-
-### Thymia Voice Biomarkers
-
-**Bonus: +\_\_ / 1.0**
-
-**Evaluation Notes:**
-[Provide detailed feedback on Thymia integration]
-
-### Anam Video Avatars
-
-**Bonus: +\_\_ / 1.0**
-
-**Evaluation Notes:**
-[Provide detailed feedback on Anam integration]
 
 ## Total Score
 
 **Final Score: \_\_/5 (+\_\_ bonus = \_\_ total)**
 
-Maximum possible: 8 (5 base + 3 bonus)
+Maximum possible: 6 (5 base + 1 bonus)
 
 ## Overall Feedback
 
