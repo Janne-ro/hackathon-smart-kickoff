@@ -37,10 +37,10 @@ Everything you need to get an Agora Conversational voice or video AI agent runni
 |------|--------|
 | Power People's Progress A | Agora (Ben) |
 | Power People's Progress B | OpenAI (Max) |
-| Portuguese | Thymia (TBD) |
-| French | Anam (TBD) |
-| Catalan | AWS (TBD) |
-| Spanish & Ukrainian | Preply (TBD) |
+| Portuguese | Thymia (Borys Pratsiuk) |
+| French | Anam (Borys Pratsiuk) |
+| Catalan | AWS (Borys Pratsiuk) |
+| Spanish & Ukrainian | Preply (Borys Pratsiuk) |
 
 ### Saturday, March 21
 
@@ -86,7 +86,7 @@ Build AI-powered language learning experiences using Agora's Conversational AI E
 
 ### Recommended Technologies
 
-The following Agora products are available to all teams. Integrating Agora ConvoAI earns a bonus (see [Judging Criteria](#judging-criteria)).
+The following Agora products are available to all teams. Integrating partner technologies earns bonus points (see [Judging Criteria](#judging-criteria)).
 
 | Technology                  | Description                                             | Documentation                                                                |
 | --------------------------- | ------------------------------------------------------- | ---------------------------------------------------------------------------- |
@@ -105,7 +105,9 @@ The following Agora products are available to all teams. Integrating Agora Convo
 
 ### Bonus Point Opportunities
 
-- ⭐ **Agora ConvoAI Integration** — Integrate Agora Conversational AI into your project for up to +1 bonus point (see [Judging Criteria](#judging-criteria))
+- ⭐ **Agora ConvoAI** — Integrate Agora Conversational AI for up to +1 bonus point
+- ⭐ **Thymia Voice Biomarkers** — Integrate Thymia's real-time voice biomarker analysis for up to +1 bonus point
+- ⭐ **Anam Video Avatars** — Integrate Anam's video avatar rendering for up to +1 bonus point
 
 ---
 
@@ -222,9 +224,12 @@ Each judge scores every category 1-5. All categories are weighted equally at 20%
 | **Presentation & Demo** | Submitted and presented but no live demo | Live demo, great pitch ready for YCombinator |
 | **Quality** | Barely working, clunky UX | Well thought-out UX, no bugs, good quality project. Includes AI Craftsmanship (`HOW_WE_BUILT.md`) |
 
-⭐ **Bonus: Agora ConvoAI Integration** (up to +1) — Teams that integrate Agora Conversational AI earn up to 1 bonus point.
+**Bonus Points** (up to +1 each):
+- ⭐ **Agora ConvoAI** — Integrate Agora Conversational AI
+- ⭐ **Thymia** — Integrate real-time voice biomarker analysis
+- ⭐ **Anam** — Integrate video avatar rendering
 
-**Maximum score: 6** (5 base + 1 Agora bonus)
+**Maximum score: 8** (5 base + up to 3 bonus)
 
 ### Judging Panel
 

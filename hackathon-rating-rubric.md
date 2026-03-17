@@ -29,7 +29,7 @@ _Expertise: AI and machine learning_
 
 ### Recommended Technologies
 
-The following Agora products are available to all teams. Integrating Agora ConvoAI earns a bonus (see [Agora ConvoAI Integration Bonus](#bonus-agora-convoai-integration-up-to-1)).
+The following Agora products are available to all teams. Integrating partner technologies earns bonus points (see [Bonus Points](#bonus-points)).
 
 | Technology                  | Description                                             | Documentation                                                                |
 | --------------------------- | ------------------------------------------------------- | ---------------------------------------------------------------------------- |
@@ -79,7 +79,7 @@ Each judge scores every category on a 1-5 scale. All 5 categories are weighted e
 - 2: Functional but lacking
 - 1 (Low): Minimal — see category descriptors
 
-Final scores are calculated as a simple average of the 5 category scores (maximum 5 points). A bonus of up to +1 may be awarded for Agora ConvoAI integration.
+Final scores are calculated as a simple average of the 5 category scores (maximum 5 points). Bonus points of up to +1 each may be awarded for integrating Agora ConvoAI, Thymia, or Anam.
 
 ---
 
@@ -145,9 +145,13 @@ _Overall project quality including UX, bugs, and AI craftsmanship_
 | 2     | Works but clunky. Noticeable bugs or UX issues.                                                                          |
 | 1     | Barely working, clunky UX, significant quality issues.                                                                   |
 
-### Bonus. Agora ConvoAI Integration (up to +1)
+### Bonus Points
 
-_Teams that integrate Agora Conversational AI into their project earn up to 1 bonus point_
+Each partner integration bonus is scored independently, up to +1 each.
+
+#### Agora ConvoAI (up to +1)
+
+_Teams that integrate Agora Conversational AI into their project_
 
 | Score | Description                                                                                                              |
 | ----- | ------------------------------------------------------------------------------------------------------------------------ |
@@ -157,21 +161,45 @@ _Teams that integrate Agora Conversational AI into their project earn up to 1 bo
 | +0.25 | Basic ConvoAI integration; minimal use or largely unchanged from starter template                                        |
 | +0    | No Agora ConvoAI integration                                                                                             |
 
+#### Thymia Voice Biomarkers (up to +1)
+
+_Teams that integrate Thymia's real-time voice biomarker analysis_
+
+| Score | Description                                                                                                              |
+| ----- | ------------------------------------------------------------------------------------------------------------------------ |
+| +1.0  | Deep integration of Thymia biomarkers that meaningfully shapes the learning experience (e.g., agent adapts based on stress/emotion) |
+| +0.75 | Solid biomarker integration with real-time display and some agent awareness                                              |
+| +0.5  | Working Thymia integration that surfaces biomarker data to the user or agent                                             |
+| +0.25 | Basic Thymia integration; biomarker data captured but minimally used                                                     |
+| +0    | No Thymia integration                                                                                                    |
+
+#### Anam Video Avatars (up to +1)
+
+_Teams that integrate Anam's real-time video avatar rendering_
+
+| Score | Description                                                                                                              |
+| ----- | ------------------------------------------------------------------------------------------------------------------------ |
+| +1.0  | Deep avatar integration that enhances the learning experience; lip-sync, expressions, and avatar choice add real value   |
+| +0.75 | Solid avatar integration with good visual quality and meaningful use in the learning flow                                |
+| +0.5  | Working Anam integration that adds a visual avatar to the conversation                                                   |
+| +0.25 | Basic Anam integration; avatar present but minimally customized or utilized                                              |
+| +0    | No Anam integration                                                                                                      |
+
 ---
 
 ## Scoring Sheet
 
-| Team Name | Technology Use (20%) | Relevancy (20%) | Product Scope (20%) | Presentation & Demo (20%) | Quality (20%) | Agora ConvoAI Bonus | Total Score | Notes |
-| --------- | -------------------- | ---------------- | ------------------- | ------------------------- | ------------- | -------------------- | ----------- | ----- |
-|           |                      |                  |                     |                           |               |                      |             |       |
+| Team Name | Technology Use (20%) | Relevancy (20%) | Product Scope (20%) | Presentation & Demo (20%) | Quality (20%) | Agora Bonus | Thymia Bonus | Anam Bonus | Total Score | Notes |
+| --------- | -------------------- | ---------------- | ------------------- | ------------------------- | ------------- | ----------- | ------------ | ---------- | ----------- | ----- |
+|           |                      |                  |                     |                           |               |             |              |            |             |       |
 
 ## Final Score Calculation
 
 - Each judge scores every category 1-5
 - All 5 categories are weighted equally at 20%
 - The category scores are averaged to produce the base score (maximum 5 points)
-- A bonus of up to **+1 point** is awarded for Agora ConvoAI integration
-- Maximum possible score: **6** (5 base + 1 bonus)
+- Bonus points of up to **+1 each** are awarded for Agora ConvoAI, Thymia, and Anam integration
+- Maximum possible score: **8** (5 base + 3 bonus)
 
 ## Feedback Section
 
