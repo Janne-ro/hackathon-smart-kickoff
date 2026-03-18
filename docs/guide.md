@@ -18,13 +18,14 @@ Whether you're joining the Preply x Agora hackathon or just exploring conversati
 - [How It Works](#how-it-works)
 - [Adding a Video Avatar with Anam](#adding-a-video-avatar-with-anam)
 - [Adding Voice Biomarkers with Thymia](#adding-voice-biomarkers-with-thymia)
+- [Adding Camera Vitals with Shen.AI](#adding-camera-vitals-with-shenai)
 - [Hackathon Ideas](#hackathon-ideas)
 - [Terminal Basics](#terminal-basics-if-youre-new)
 - [Resources](#resources)
 
 ## What You'll Build (with this guide)
 
-A real-time voice AI agent running in your browser. You speak, the agent listens, thinks, and talks back — with sub-second latency, interruption handling, and live transcription. If you want to go further, add a video avatar face (powered by Anam) or real-time voice biomarker analysis (powered by Thymia). Building with a different Agora product? You'll still need [Agora credentials](#agora-credentials-always-required) — then head to the [Agora docs](https://docs.agora.io/) for your product. If you're using Claude Code, the [Agora skill](#install-the-agora-skill) covers all Agora products, not just ConvoAI.
+A real-time voice AI agent running in your browser. You speak, the agent listens, thinks, and talks back — with sub-second latency, interruption handling, and live transcription. If you want to go further, add a video avatar face (powered by Anam), real-time voice biomarker analysis (powered by Thymia), or camera-based physiological vitals (powered by Shen.AI). Building with a different Agora product? You'll still need [Agora credentials](#agora-credentials-always-required) — then head to the [Agora docs](https://docs.agora.io/) for your product. If you're using Claude Code, the [Agora skill](#install-the-agora-skill) covers all Agora products, not just ConvoAI.
 
 Try it now at **[convoai-demo.agora.io](https://convoai-demo.agora.io/)** — no setup required.
 
@@ -265,6 +266,64 @@ Within 30-60 seconds of speaking, biomarker scores start appearing. The AI thera
 - **60s+:** Agent starts referencing biomarker data in conversation
 - **Safety analysis:** If concerns detected, alert appears at top of Thymia tab
 
+## Adding Camera Vitals with Shen.AI
+
+[Shen.AI](https://shen.ai/) provides real-time camera-based physiological measurement — heart rate, HRV, stress index, breathing rate, and blood pressure — all captured from the user's webcam with no wearable hardware. Combined with Thymia voice biomarkers, the AI agent gets a complete picture of the user's emotional and physiological state.
+
+### What It Does
+
+While the user speaks to the AI agent, the Shen.AI WASM SDK runs in the browser analyzing the user's face via webcam. Vitals are:
+
+- **Displayed in the client UI** — a dedicated Shen tab shows real-time and completed measurement results
+- **Published to the server via RTM** — vitals are sent every 2 seconds
+- **Injected into the LLM system prompt** — the agent can reference them ("Your heart rate is looking steady at 72 BPM")
+
+### Architecture
+
+Unlike Thymia (server-side audio processing), Shen runs entirely client-side — the WASM SDK captures the camera, measures vitals from facial blood flow patterns, and publishes them via RTM. No server-side media processing needed.
+
+```
+react-video-client-avatar → simple-backend → Agora ConvoAI → server-custom-llm
+        │                                                          └── Shen module (RTM listener → LLM prompt)
+        │
+        └── Shen.AI WASM SDK (browser-side)
+              ├── Camera capture + face detection
+              └── RTM publish (vitals) → server
+```
+
+### Keys Required
+
+| Key                            | Where to Get It                                 |
+| ------------------------------ | ----------------------------------------------- |
+| Agora APP_ID + APP_CERTIFICATE | [Agora Console](https://console.agora.io)       |
+| Shen.AI API Key                | Contact [Shen.AI](https://shen.ai/)             |
+| OpenAI API Key                 | [OpenAI Platform](https://platform.openai.com/) |
+| TTS Key (ElevenLabs or Rime)   | [ElevenLabs](https://elevenlabs.io/) / [Rime](https://rime.ai/) |
+| Anam API Key (for avatar)      | [Anam](https://www.anam.ai/)                    |
+
+### Quick Setup
+
+Full step-by-step instructions are in the [Shen recipe](https://github.com/AgoraIO-Conversational-AI/agent-samples/blob/main/recipes/shen.md). The short version:
+
+1. Place the Shen.AI SDK files in `react-video-client-avatar/public/shenai-sdk/` (WASM + JS bindings)
+2. Start the Custom LLM server: `PORT=8100 SHEN_ENABLED=true node custom_llm.js`
+3. Add a `VIDEO_THYMIA_SHEN` profile to `simple-backend/.env` pointing `LLM_URL` at your Custom LLM server
+4. Set `NEXT_PUBLIC_ENABLE_SHEN=true` and `NEXT_PUBLIC_SHEN_API_KEY=<key>` in the client `.env.local`
+5. Start the backend and React video client
+6. Enter `VIDEO_THYMIA_SHEN` in the Server Profile field and start a conversation
+
+### What You'll See
+
+- **0-5s:** SDK loads (WASM, ~35MB)
+- **5-10s:** Camera activates, face detection overlay appears
+- **10-30s:** Real-time vitals populate (heart rate, HRV, stress, breathing rate)
+- **30s:** First full measurement cycle completes — blood pressure, estimated age
+- **30s+:** Values published to server via RTM, agent starts referencing vitals in conversation
+
+### Combining Shen + Thymia
+
+Shen and Thymia complement each other — voice measures emotional/psychological state while camera measures physiological state. Enable both with `NEXT_PUBLIC_ENABLE_THYMIA=true` and `NEXT_PUBLIC_ENABLE_SHEN=true` in the client `.env.local`. The UI shows separate tabs for each, and the Custom LLM server injects both data sources into the LLM prompt.
+
 ## Hackathon Ideas
 
 See the [Thought Starters](../Thought_Starters.md) for project ideas covering language anxiety coaching, pronunciation practice, avatar tutors, mock interview prep, cultural conversation partners, progress dashboards, and group language exchange.
@@ -294,6 +353,7 @@ That's it. Once your coding agent is running, you communicate in plain English.
 | **v0 Starter**                | [github.com/AgoraIO-Conversational-AI/vibe-coding-v0](https://github.com/AgoraIO-Conversational-AI/vibe-coding-v0)           |
 | **Custom LLM Server**         | [github.com/AgoraIO-Conversational-AI/server-custom-llm](https://github.com/AgoraIO-Conversational-AI/server-custom-llm)     |
 | **Thymia Recipe**             | [recipes/thymia.md](https://github.com/AgoraIO-Conversational-AI/agent-samples/blob/main/recipes/thymia.md)                  |
+| **Shen Recipe**               | [recipes/shen.md](https://github.com/AgoraIO-Conversational-AI/agent-samples/blob/main/recipes/shen.md)                      |
 | **Agora Console**             | [console.agora.io](https://console.agora.io)                                                                                 |
 | **Agora ConvoAI Docs**        | [docs.agora.io/en/conversational-ai](https://docs.agora.io/en/conversational-ai/overview/product-overview)                   |
 | **Claude Code**               | [docs.anthropic.com/en/docs/claude-code](https://docs.anthropic.com/en/docs/claude-code)                                     |
@@ -303,5 +363,6 @@ That's it. Once your coding agent is running, you communicate in plain English.
 | **Aider**                     | [aider.chat](https://aider.chat)                                                                                             |
 | **Anam**                      | [anam.ai](https://www.anam.ai/)                                                                                              |
 | **Thymia**                    | [thymia.ai](https://thymia.ai/)                                                                                              |
+| **Shen.AI**                   | [shen.ai](https://shen.ai/)                                                                                                  |
 | **OpenAI API Keys**           | [platform.openai.com](https://platform.openai.com/settings/organization/api-keys)                                            |
 | **TTS Providers**             | [Rime](https://rime.ai/) / [ElevenLabs](https://elevenlabs.io/) / [Cartesia](https://cartesia.ai/)                           |
