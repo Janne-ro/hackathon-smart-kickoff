@@ -5,7 +5,11 @@ This file aims to show how we worked with AI, not just what we built.
 ## Planning 
 > "How did you use AI to plan your architecture, break down tasks, or explore approaches?"
 
-Initially, we brainstormed ideas ourselves starting with branching out in different directions and then collectivly iterated on them and narrowed down to one final idea we all agreed on.  
+Initially, we conducted a team brainstorming session, exploring ideas across multiple directions. Through collaborative discussion and iterative refinement, we gradually narrowed these down to a single concept that we all agreed upon. We did not use AI during this ideation phase.
+
+Subsequently, we designed the system architecture by icmd-k vdentifying its main components (*C1 – AI Onboarding Chat* and *C2 – Dashboards*). We began with a high-level definition of each component and then progressively refined them into more concrete requirements. At this stage, we used ChatGPT 5.4 to validate our detailed architecture and ensure it aligned with the goals outlined in the initial [Motivation](README.md#Motivation) and [How It Works](README.md#how-it-works) sections of our README.
+
+Finally, we organized the work into structured work packages, which were then distributed among the team members.
 
 ---
 
@@ -42,9 +46,16 @@ Initially, we brainstormed ideas ourselves starting with branching out in differ
 --- 
 
 ## Testing & iteration 
-How did you verify AI-generated code? Did you use test-driven development, manual testing, or AI-assisted debugging?
+> "How did you verify AI-generated code? Did you use test-driven development, manual testing, or AI-assisted debugging?"
+
+We used a **combination of manual testing and AI-assisted debugging**, which allowed us to quickly identify edge cases and validate behavior against expected outcomes. One example where this really helped was in evaluating the expected calculation for the dashboards at the interface between the AI onboarding chat and the dashboards for which we used manual tests. Additionally, it assisted with iteratively refining both our conversational flows and retention prediction models for an optimized user experience. It is additionally noteworthy that we did not approve changes automatically but always read through the code and made sure that the it works as intended before adding it to the codebase. 
 
 ---
 
 ## Challenges & pivots
-Where did AI struggle? How did you course-correct?
+> "Where did AI struggle? How did you course-correct?"
+
+There were mainly two challenges to the development with AI: 
+
+* At one point AI suggested to modify files in the Thymia repo. However we wanted to be able to run the code independently of local changes made to the repository. So to pivot we reiterated on the prompt and overall approach to make it more resilient to make our code more robust and modularly independent. 
+* Early on, we sometimes overused AI-generated code without fully understanding it, which made debugging difficult. We addressed this by being more intentional with prompts and verifying outputs step by step while focusing on code understanding. Additionally we incorporatied manual checks. This greatly strengthened our understanding of the underlying conceptual code logic which helped us a lot in debugging effectivly.
