@@ -77,11 +77,19 @@ We already collect most of this data during onboarding, this approach enhances i
 
 ## Architecture
 
-```bash
-# TODO: Document APIs used
-```
+### Used APIs
+The following APIs are used in this project:
+* Lorem ipsum
+
 ### File Structure
-```bash
-# TODO: Add project structure
+
+```
+submissions/
+├── team-name/
+│   ├── docs/              # Additional documentation and images
+│   ├── src/               # The source code to our feature
+│   ├── demo.mp4           # A short demo video from a students perspective
+│   ├── HOW_WE_BUILT.md    # Documentation of our AI development process
+│   └── README.md          # Description of our project
 ```
  
