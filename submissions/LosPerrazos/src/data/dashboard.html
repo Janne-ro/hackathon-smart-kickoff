@@ -22,6 +22,8 @@
       --gray-3: #a0a0a0;
       --blue: #3b82f6;
       --blue-light: #eff6ff;
+      --green: #22c55e;
+      --green-light: #ecfdf3;
       --amber: #f59e0b;
       --amber-light: #fffbeb;
       --purple: #8b5cf6;
@@ -591,30 +593,92 @@
 
 <script>
   async function loadDashboardData() {
-    try {
-      const response = await fetch("data/dashboard-data.json", { cache: "no-cache" });
-      if (!response.ok) {
-        throw new Error(`Request failed with status ${response.status}`);
+    const sources = ["data/latest-session.json", "data/dashboard-data.json"];
+    for (const src of sources) {
+      try {
+        const response = await fetch(src, { cache: "no-cache" });
+        if (!response.ok) {
+          throw new Error(`Request failed with status ${response.status}`);
+        }
+        const dashboardData = await response.json();
+        renderDashboard(dashboardData);
+        return;
+      } catch (error) {
+        console.warn(`Failed to load ${src}:`, error);
       }
-      const dashboardData = await response.json();
-      renderDashboard(dashboardData);
-    } catch (error) {
-      console.error('Failed to load dashboard data:', error);
-      displayDataError();
     }
+    displayDataError();
   }
 
-  function renderDashboard({ student, cefrLevels, sessions }) {
-    if (!student) {
+  function renderDashboard(payload) {
+    const student = payload.student || payload.studentProfile || {};
+    const assessment = payload.assessment || {};
+    const history = assessment.history || payload.history || {};
+    const cefrLevels = history.cefrLevels || payload.cefrLevels || [];
+    const sessions = history.sessions || payload.sessions || [];
+    const skills = assessment.skills || student.skills || [];
+
+    if (!student || Object.keys(student).length === 0) {
       throw new Error('Student data missing');
     }
 
     populateProfile(student);
-    populateStats(student.stats || []);
-    renderRadarChart(student.skills || []);
-    renderSkillList(student.skills || []);
-    renderCefrTrack(Array.isArray(cefrLevels) ? cefrLevels : [], student.level);
+    populateStats(buildStats(student, assessment));
+    renderRadarChart(skills);
+    renderSkillList(skills);
+    renderCefrTrack(Array.isArray(cefrLevels) ? cefrLevels : [], assessment.cefrBadge || student.level);
     renderSessions(Array.isArray(sessions) ? sessions : []);
+  }
+
+  function buildStats(student, assessment) {
+    if (Array.isArray(student.stats) && student.stats.length) return student.stats;
+    const stats = [];
+    if (assessment.retentionConfidence !== undefined) {
+      const pct = Math.round((assessment.retentionConfidence || 0) * 100);
+      stats.push({
+        icon: "✅",
+        label: "Retention Confidence",
+        value: `${pct}%`,
+        sub: "Signal from sentiment/biomarkers",
+        iconBg: "var(--green-light)",
+        iconColor: "var(--green)",
+        valueColor: "var(--green)"
+      });
+    }
+    if (student.budgetRange) {
+      stats.push({
+        icon: "💶",
+        label: "Budget per Lesson",
+        value: student.budgetRange,
+        sub: "Team-set budget",
+        iconBg: "var(--amber-light)",
+        iconColor: "var(--amber)",
+        valueColor: "var(--amber)"
+      });
+    }
+    if (student.lessonFrequencyPerWeek) {
+      stats.push({
+        icon: "🗓️",
+        label: "Lessons / Week",
+        value: `${student.lessonFrequencyPerWeek}`,
+        sub: student.lessonDurationMinutes ? `${student.lessonDurationMinutes} min` : "",
+        iconBg: "var(--blue-light)",
+        iconColor: "var(--blue)",
+        valueColor: "var(--blue)"
+      });
+    }
+    if (student.goal) {
+      stats.push({
+        icon: "🎯",
+        label: "Goal",
+        value: student.goal,
+        sub: student.timeline || "",
+        iconBg: "var(--pink-light)",
+        iconColor: "var(--pink)",
+        valueColor: "var(--pink)"
+      });
+    }
+    return stats;
   }
 
   function populateProfile(student) {

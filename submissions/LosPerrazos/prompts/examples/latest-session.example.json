@@ -1,0 +1,91 @@
+{
+  "session": {
+    "id": "session-demo-001",
+    "channel": "demo123",
+    "profile": "VIDEO_THYMIA_SHEN",
+    "startedAt": "2026-03-21T10:00:00Z",
+    "endedAt": "2026-03-21T10:06:30Z"
+  },
+  "student": {
+    "name": "Alex Johnson",
+    "initials": "AJ",
+    "nativeLanguage": "Spanish",
+    "targetLanguage": "English",
+    "timezone": "Europe/Madrid",
+    "memberSince": "Mar 2026",
+    "goal": "Career",
+    "inspiration": ["career", "challenge"],
+    "topicFocus": ["business", "conversation"],
+    "timeline": "3 months",
+    "urgency": "High",
+    "priorExperience": "6 months of evening classes",
+    "budgetRange": "€15–25",
+    "lessonFrequencyPerWeek": 3,
+    "lessonDurationMinutes": 45,
+    "availability": ["Mon 19:00-21:00 CET", "Wed 18:00-20:00 CET", "Sat 11:00-13:00 CET"],
+    "teachingStylePrefs": ["structured", "patient", "gives homework"],
+    "tutorCountryPref": "UK",
+    "tutorLanguagePref": ["Spanish"],
+    "motivationQuote": "I need English for a promotion in Q3.",
+    "motivationTags": ["career", "promotion"]
+  },
+  "assessment": {
+    "overallLevel": "B1",
+    "cefrBadge": "B1",
+    "retentionConfidence": 0.72,
+    "sentiment": { "label": "positive", "score": 0.63, "stress": 0.18 },
+    "vitals": { "heartRate": 72, "breathingRate": 16, "hrv": 51, "source": "shen", "simulated": true },
+    "skills": [
+      { "name": "Speaking", "score": 68, "cefr": "B1", "icon": "🎙️", "color": "#ff5ba4" },
+      { "name": "Listening", "score": 62, "cefr": "B1", "icon": "👂", "color": "#d63d85" },
+      { "name": "Reading", "score": 78, "cefr": "B2", "icon": "📖", "color": "#ff85bd" },
+      { "name": "Writing", "score": 55, "cefr": "B1", "icon": "✍️", "color": "#8b5cf6" },
+      { "name": "Vocabulary", "score": 64, "cefr": "B1", "icon": "💬", "color": "#3b82f6" },
+      { "name": "Grammar", "score": 58, "cefr": "B1", "icon": "🔤", "color": "#f59e0b" }
+    ],
+    "strengths": [
+      "Clear pronunciation on practiced topics",
+      "Good listening comprehension for everyday topics"
+    ],
+    "focusAreas": [
+      "Past/future tense consistency",
+      "Business vocabulary for meetings",
+      "Speaking pace and filler reduction"
+    ],
+    "history": {
+      "cefrLevels": [
+        { "code": "A1", "label": "Beginner" },
+        { "code": "A2", "label": "Elementary" },
+        { "code": "B1", "label": "Intermediate" },
+        { "code": "B2", "label": "Upper-Int." },
+        { "code": "C1", "label": "Advanced" },
+        { "code": "C2", "label": "Mastery" }
+      ],
+      "sessions": [
+        { "date": "Mar 18, 2026", "tutor": "Maria S.", "focus": "Speaking & Pronunciation", "duration": "45 min", "score": 82, "level": "high" },
+        { "date": "Mar 14, 2026", "tutor": "James K.", "focus": "Business Writing", "duration": "60 min", "score": 64, "level": "mid" },
+        { "date": "Mar 10, 2026", "tutor": "Sofia R.", "focus": "Listening Comprehension", "duration": "45 min", "score": 55, "level": "low" }
+      ]
+    }
+  },
+  "preferences": {
+    "learningGoals": ["Career advancement", "Business small talk", "Presentation skills"],
+    "tutorPreferences": ["UK accent", "Structured feedback", "Homework after sessions"],
+    "schedulingBudget": {
+      "budgetRange": "€15–25",
+      "lessonFrequencyPerWeek": 3,
+      "lessonDurationMinutes": 45,
+      "availability": ["Mon 19:00-21:00 CET", "Wed 18:00-20:00 CET", "Sat 11:00-13:00 CET"],
+      "timezone": "Europe/Madrid"
+    }
+  },
+  "tutorMatch": {
+    "countEstimate": 47,
+    "previews": [
+      { "priceRange": "€18–24", "rating": 4.9, "country": "UK", "tags": ["business", "accent"], "name": "Tutor A", "blurred": true },
+      { "priceRange": "€14–20", "rating": 4.8, "country": "USA", "tags": ["presentations", "fluency"], "name": "Tutor B", "blurred": true },
+      { "priceRange": "€12–18", "rating": 4.7, "country": "IE", "tags": ["conversation", "confidence"], "name": "Tutor C", "blurred": true }
+    ],
+    "cta": { "label": "Find My Professor", "url": "https://preply.com", "enabled": true }
+  }
+}

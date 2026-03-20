@@ -1,0 +1,158 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Smart Onboard Session Summary",
+  "type": "object",
+  "required": ["session", "student", "assessment", "tutorMatch"],
+  "properties": {
+    "session": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "channel": { "type": "string" },
+        "profile": { "type": "string" },
+        "startedAt": { "type": "string", "format": "date-time" },
+        "endedAt": { "type": "string", "format": "date-time" }
+      }
+    },
+    "student": {
+      "type": "object",
+      "required": ["name", "targetLanguage"],
+      "properties": {
+        "name": { "type": "string" },
+        "initials": { "type": "string" },
+        "nativeLanguage": { "type": "string" },
+        "targetLanguage": { "type": "string" },
+        "timezone": { "type": "string" },
+        "memberSince": { "type": "string" },
+        "goal": { "type": "string" },
+        "inspiration": { "type": "array", "items": { "type": "string" } },
+        "topicFocus": { "type": "array", "items": { "type": "string" } },
+        "timeline": { "type": "string" },
+        "urgency": { "type": "string" },
+        "priorExperience": { "type": "string" },
+        "budgetRange": { "type": "string" },
+        "lessonFrequencyPerWeek": { "type": "number" },
+        "lessonDurationMinutes": { "type": "number" },
+        "availability": { "type": "array", "items": { "type": "string" } },
+        "teachingStylePrefs": { "type": "array", "items": { "type": "string" } },
+        "tutorCountryPref": { "type": "string" },
+        "tutorLanguagePref": { "type": "array", "items": { "type": "string" } },
+        "motivationQuote": { "type": "string" },
+        "motivationTags": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "assessment": {
+      "type": "object",
+      "properties": {
+        "overallLevel": { "type": "string" },
+        "cefrBadge": { "type": "string" },
+        "retentionConfidence": { "type": "number" },
+        "sentiment": {
+          "type": "object",
+          "properties": {
+            "label": { "type": "string" },
+            "score": { "type": "number" },
+            "stress": { "type": "number" }
+          }
+        },
+        "vitals": {
+          "type": "object",
+          "properties": {
+            "heartRate": { "type": "number" },
+            "breathingRate": { "type": "number" },
+            "hrv": { "type": "number" },
+            "source": { "type": "string" },
+            "simulated": { "type": "boolean" }
+          }
+        },
+        "skills": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "score": { "type": "number" },
+              "cefr": { "type": "string" },
+              "icon": { "type": "string" },
+              "color": { "type": "string" }
+            }
+          }
+        },
+        "strengths": { "type": "array", "items": { "type": "string" } },
+        "focusAreas": { "type": "array", "items": { "type": "string" } },
+        "history": {
+          "type": "object",
+          "properties": {
+            "cefrLevels": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": { "code": { "type": "string" }, "label": { "type": "string" } }
+              }
+            },
+            "sessions": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "date": { "type": "string" },
+                  "focus": { "type": "string" },
+                  "duration": { "type": "string" },
+                  "score": { "type": "number" },
+                  "level": { "type": "string" },
+                  "tutor": { "type": "string" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "preferences": {
+      "type": "object",
+      "properties": {
+        "learningGoals": { "type": "array", "items": { "type": "string" } },
+        "tutorPreferences": { "type": "array", "items": { "type": "string" } },
+        "schedulingBudget": {
+          "type": "object",
+          "properties": {
+            "budgetRange": { "type": "string" },
+            "lessonFrequencyPerWeek": { "type": "number" },
+            "lessonDurationMinutes": { "type": "number" },
+            "availability": { "type": "array", "items": { "type": "string" } },
+            "timezone": { "type": "string" }
+          }
+        }
+      }
+    },
+    "tutorMatch": {
+      "type": "object",
+      "required": ["countEstimate"],
+      "properties": {
+        "countEstimate": { "type": "number" },
+        "previews": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "priceRange": { "type": "string" },
+              "rating": { "type": "number" },
+              "country": { "type": "string" },
+              "tags": { "type": "array", "items": { "type": "string" } },
+              "name": { "type": "string" },
+              "blurred": { "type": "boolean" }
+            }
+          }
+        },
+        "cta": {
+          "type": "object",
+          "properties": {
+            "label": { "type": "string" },
+            "url": { "type": "string" },
+            "enabled": { "type": "boolean" }
+          }
+        }
+      }
+    }
+  }
+}
