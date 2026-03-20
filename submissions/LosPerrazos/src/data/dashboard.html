@@ -593,18 +593,26 @@
 
 <script>
   async function loadDashboardData() {
-    const sources = ["data/latest-session.json", "data/dashboard-data.json"];
-    for (const src of sources) {
+    // Handle both served-from-root and served-from-src/data cases
+    const candidates = [
+      "./latest-session.json",
+      "./data/latest-session.json",
+      "latest-session.json",
+      "data/latest-session.json",
+      "./dashboard-data.json",
+      "./data/dashboard-data.json",
+      "dashboard-data.json",
+      "data/dashboard-data.json"
+    ];
+    for (const src of candidates) {
       try {
         const response = await fetch(src, { cache: "no-cache" });
-        if (!response.ok) {
-          throw new Error(`Request failed with status ${response.status}`);
-        }
+        if (!response.ok) continue;
         const dashboardData = await response.json();
         renderDashboard(dashboardData);
         return;
       } catch (error) {
-        console.warn(`Failed to load ${src}:`, error);
+        // try next
       }
     }
     displayDataError();
