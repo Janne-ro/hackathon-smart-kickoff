@@ -6,6 +6,7 @@ This file aims to show how we worked with AI, not just what we built.
 > "How did you use AI to plan your architecture, break down tasks, or explore approaches?"
 
 Initially, we brainstormed ideas ourselves starting with branching out in different directions and then collectivly iterated on them and narrowed down to one final idea we all agreed on.  
+
 ---
 
 ## Model choices 
