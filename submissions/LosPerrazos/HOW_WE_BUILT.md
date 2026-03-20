@@ -17,7 +17,7 @@ Finally, we organized the work into structured work packages, which were then di
 > "Which AI models/tools did you use for development and why?"
 
 **For coding:**
-* *ChatGPT 5.4 in Codex environment*: ChatGPT 5.4 in the Codex environment helped us quickly generate, debug, and optimize code with contextual understanding of programming logic.
+* *ChatGPT-5.3-Codex in Codex environment*: ChatGPT 5.3 Codex helped us quickly generate, debug, and optimize code with contextual understanding of programming logic.
 * *Claude Opus*: We used Claude Opus for its advanced reasoning and code synthesis capabilities, which accelerated development of complex features.
 
 **For research purposes:**
@@ -34,31 +34,14 @@ Finally, we organized the work into structured work packages, which were then di
 * **Prompt Iteration**: Repeatedly refining prompts based on AI output proved highly effective. Also asking the model to critique or improve its own response often led to more precise and actionable results.
 * **Role or Persona Framing**: Assigning the AI a specific role (e.g., “You are a coding expert”) improved the relevance of the output and kept the responses focused on the task.
 
-*Example prompt*: "Lets build a second dashboard for the student. 
-
-Lets plan the AI assesment first. 
-
-Preply already ask the following questions:  
-
-What do you want to learn?
-English (Language options) 
-[...]
-
-The idea is that the AI assistant also retrieves at least this information, in a conversational way of course. Other information migh also be asked.
-The things that are direct filters or options that the user selects, should be displayed in this dashboard so the user can change them in case that they were incorrect. 
-
-We should not show the retention score, instead, we should show the user a motivation assesment of their proficiency, showing things that he does well and also areas of inprovement. 
-
-Then a big button showing find my professor should be at the end to go to the main preply app, finalizing the diagnosis of the new student.  
-
-What do you think. Am i missing something? output a list of features for the student dashboard before start coding"
+*Example prompt: "Lets build a second dashboard for the student. Lets plan the AI assesment first.  Preply already ask the following questions:  What do you want to learn? English (Language options)  [...] The idea is that the AI assistant also retrieves at least this information, in a conversational way of course. Other information migh also be asked. The things that are direct filters or options that the user selects, should be displayed in this dashboard so the user can change them in case that they were incorrect. We should not show the retention score, instead, we should show the user a motivation assesment of their proficiency, showing things that he does well and also areas of inprovement. [...] What do you think. Am i missing something? output a list of features for the student dashboard before start coding"*
 
 ### Prompting techniques that didn't work well
 
 * **Zero-Shot Prompting**: Asking the model to generate output without context or examples often produced incomplete or inconsistent results, requiring many iterations to correct.
 * **Single-Instruction Prompts for Complex Tasks**: Giving multi-step tasks in one instruction without breaking them down often led to misaligned outputs.
 
-*Example prompt*: " That already looks good but move the Find a professor button such that it is directly underneath the language skills section. Also change the colorscheme to pink/red (do research on the colorscheme of Preply to match). Finally, add something to help students understand their areas of improvement more."
+*Example prompt: " That already looks good but move the Find a professor button such that it is directly underneath the language skills section. Also change the colorscheme to pink/red (do research on the colorscheme of Preply to match). Finally, add something to help students understand their areas of improvement more."*
 
 --- 
 
