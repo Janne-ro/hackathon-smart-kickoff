@@ -115,6 +115,7 @@
     .retention-hero {
       /* background: linear-gradient(135deg, #8b1a4a 0%, #6b1238 60%, #4a0d28 100%); */
       background: #e0faf6;
+      border: 2px solid #121117;
       border-radius: var(--radius);
       padding: 40px;
       box-shadow: var(--shadow-lg);
@@ -459,7 +460,7 @@
 
     const initials = deriveInitials(student.name);
     if (avatar)   avatar.textContent = initials;
-    if (nameEl)   nameEl.textContent = student.name || '—';
+    if (nameEl)   nameEl.textContent = `Student Name: ${student.name || '—'}`;
 
     if (subtitle) {
       const parts = [];

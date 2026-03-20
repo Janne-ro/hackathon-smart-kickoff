@@ -13,8 +13,6 @@
     "skills": [
       { "name": "Speaking",   "score": 78, "cefr": "B2", "icon": "🎙️", "color": "#ff5ba4" },
       { "name": "Listening",  "score": 62, "cefr": "B1", "icon": "👂",  "color": "#d63d85" },
-      { "name": "Reading",    "score": 90, "cefr": "C1", "icon": "📖",  "color": "#ff85bd" },
-      { "name": "Writing",    "score": 45, "cefr": "B1", "icon": "✍️",  "color": "#8b5cf6" },
       { "name": "Vocabulary", "score": 71, "cefr": "B2", "icon": "💬",  "color": "#3b82f6" },
       { "name": "Grammar",    "score": 58, "cefr": "B1", "icon": "🔤",  "color": "#f59e0b" }
     ]
