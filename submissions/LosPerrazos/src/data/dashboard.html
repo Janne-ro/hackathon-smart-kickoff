@@ -419,6 +419,18 @@
       box-shadow: 0 0 0 4px var(--pink-light);
     }
 
+    /* Chips & info blocks */
+    .chip-row { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip { padding: 6px 12px; border-radius: 999px; background: #eef2ff; color: #312e81; font-size: 12px; font-weight: 600; border: 1px solid #dfe3ff; }
+    .info-card { background: var(--surface); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow); display: flex; gap: 16px; flex-direction: column; }
+    .info-title { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 16px; }
+    .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+    .quote { font-style: italic; color: var(--text); background: var(--gray-1); border-radius: 12px; padding: 12px 14px; border: 1px solid var(--border); }
+    .teaser-card { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 12px; }
+    .teaser-pill { background: var(--gray-1); border-radius: 12px; padding: 12px; border: 1px dashed var(--border); text-align: center; color: var(--text-muted); }
+    .cta-row { display: flex; justify-content: space-between; align-items: center; margin-top: 8px; flex-wrap: wrap; gap: 8px; }
+    .cta-button { background: var(--pink); color: white; border: none; border-radius: 12px; padding: 10px 16px; font-weight: 700; cursor: pointer; box-shadow: var(--shadow); }
+
     .cefr-label {
       font-size: 11px;
       font-weight: 600;
@@ -589,6 +601,15 @@
     </table>
   </div>
 
+  <!-- Motivation & Goals -->
+  <div class="info-card" id="motivationCard"></div>
+
+  <!-- Preferences -->
+  <div class="info-card" id="preferencesCard"></div>
+
+  <!-- Tutor Match Preview -->
+  <div class="info-card" id="tutorTeaserCard"></div>
+
 </main>
 
 <script>
@@ -636,6 +657,9 @@
     renderSkillList(skills);
     renderCefrTrack(Array.isArray(cefrLevels) ? cefrLevels : [], assessment.cefrBadge || student.level);
     renderSessions(Array.isArray(sessions) ? sessions : []);
+    renderMotivation(student);
+    renderPreferences(payload.preferences || {}, student);
+    renderTutorTeaser(payload.tutorMatch || {});
   }
 
   function buildStats(student, assessment) {
@@ -687,6 +711,146 @@
       });
     }
     return stats;
+  }
+
+  function renderMotivation(student) {
+    const card = document.getElementById('motivationCard');
+    if (!card) return;
+    card.innerHTML = '';
+    const title = document.createElement('div');
+    title.className = 'info-title';
+    title.innerHTML = '<div class="card-title-icon" style="background: var(--purple-light);">💡</div>Motivation & Goals';
+    card.appendChild(title);
+
+    const quote = document.createElement('div');
+    quote.className = 'quote';
+    quote.textContent = student.motivationQuote || 'No quote captured yet.';
+    card.appendChild(quote);
+
+    const tagsRow = document.createElement('div');
+    tagsRow.className = 'chip-row';
+    (student.motivationTags || []).forEach(tag => {
+      const c = document.createElement('span');
+      c.className = 'chip';
+      c.textContent = tag;
+      tagsRow.appendChild(c);
+    });
+    if (!tagsRow.childNodes.length) {
+      const c = document.createElement('span');
+      c.className = 'chip';
+      c.textContent = 'No tags yet';
+      tagsRow.appendChild(c);
+    }
+    card.appendChild(tagsRow);
+  }
+
+  function renderPreferences(preferences, student) {
+    const card = document.getElementById('preferencesCard');
+    if (!card) return;
+    card.innerHTML = '';
+    const title = document.createElement('div');
+    title.className = 'info-title';
+    title.innerHTML = '<div class="card-title-icon" style="background: var(--blue-light);">⚙️</div>Preferences';
+    card.appendChild(title);
+
+    const grid = document.createElement('div');
+    grid.className = 'info-grid';
+
+    const addSection = (label, items) => {
+      const box = document.createElement('div');
+      const h = document.createElement('div');
+      h.style.fontWeight = '700';
+      h.style.marginBottom = '6px';
+      h.textContent = label;
+      box.appendChild(h);
+      const row = document.createElement('div');
+      row.className = 'chip-row';
+      if (items && items.length) {
+        items.forEach(i => {
+          const c = document.createElement('span');
+          c.className = 'chip';
+          c.textContent = i;
+          row.appendChild(c);
+        });
+      } else {
+        const c = document.createElement('span');
+        c.className = 'chip';
+        c.textContent = 'Not set';
+        row.appendChild(c);
+      }
+      box.appendChild(row);
+      grid.appendChild(box);
+    };
+
+    addSection('Learning Goals', preferences.learningGoals || []);
+    addSection('Tutor Preferences', preferences.tutorPreferences || []);
+    const sched = preferences.schedulingBudget || {};
+    const schedStrings = [];
+    if (sched.budgetRange) schedStrings.push(`Budget ${sched.budgetRange}`);
+    if (sched.lessonFrequencyPerWeek) schedStrings.push(`${sched.lessonFrequencyPerWeek}/week`);
+    if (sched.lessonDurationMinutes) schedStrings.push(`${sched.lessonDurationMinutes} min`);
+    if (sched.timezone) schedStrings.push(sched.timezone);
+    if (sched.availability && sched.availability.length) {
+      schedStrings.push(...sched.availability);
+    }
+    addSection('Scheduling & Budget', schedStrings);
+
+    card.appendChild(grid);
+  }
+
+  function renderTutorTeaser(tutorMatch) {
+    const card = document.getElementById('tutorTeaserCard');
+    if (!card) return;
+    card.innerHTML = '';
+    const title = document.createElement('div');
+    title.className = 'info-title';
+    title.innerHTML = '<div class="card-title-icon" style="background: var(--amber-light);">👩‍🏫</div>Tutor Match Preview';
+    card.appendChild(title);
+
+    const count = tutorMatch.countEstimate ?? '—';
+    const countEl = document.createElement('div');
+    countEl.style.fontSize = '28px';
+    countEl.style.fontWeight = '800';
+    countEl.textContent = `We found ${count} tutors for you`;
+    card.appendChild(countEl);
+
+    const teaser = document.createElement('div');
+    teaser.className = 'teaser-card';
+    const previews = tutorMatch.previews || [];
+    if (!previews.length) {
+      const empty = document.createElement('div');
+      empty.className = 'teaser-pill';
+      empty.textContent = 'Previews will appear after your first session';
+      teaser.appendChild(empty);
+    } else {
+      previews.slice(0, 3).forEach(p => {
+        const box = document.createElement('div');
+        box.className = 'teaser-pill';
+        box.innerHTML = `<div style="font-weight:700;">${p.name || 'Tutor'}</div>
+          <div style="font-size:13px;">${p.country || ''}</div>
+          <div style="font-size:13px;">${p.priceRange || ''}</div>
+          <div style="font-size:12px; margin-top:4px;">${(p.tags || []).join(' • ')}</div>`;
+        teaser.appendChild(box);
+      });
+    }
+    card.appendChild(teaser);
+
+    const ctaRow = document.createElement('div');
+    ctaRow.className = 'cta-row';
+    const helper = document.createElement('span');
+    helper.style.color = 'var(--text-muted)';
+    helper.textContent = tutorMatch.cta?.label ? tutorMatch.cta.label : 'Your personalized matches are ready';
+    ctaRow.appendChild(helper);
+    const btn = document.createElement('button');
+    btn.className = 'cta-button';
+    btn.textContent = 'Find My Professor';
+    btn.disabled = tutorMatch.cta && tutorMatch.cta.enabled === false;
+    btn.onclick = () => {
+      const url = tutorMatch.cta?.url || 'https://preply.com';
+      window.open(url, '_blank');
+    };
+    ctaRow.appendChild(btn);
+    card.appendChild(ctaRow);
   }
 
   function populateProfile(student) {
