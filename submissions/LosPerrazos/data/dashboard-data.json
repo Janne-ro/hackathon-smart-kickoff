@@ -1,0 +1,161 @@
+{
+  "student": {
+    "name": "Alex Johnson",
+    "initials": "AJ",
+    "language": "English",
+    "memberSince": "Jan 2024",
+    "level": "B2",
+    "badges": [
+      {
+        "icon": "🌍",
+        "label": "English"
+      },
+      {
+        "icon": "🎯",
+        "label": "Level B2"
+      },
+      {
+        "icon": "🔥",
+        "label": "14-day streak"
+      },
+      {
+        "icon": "⭐",
+        "label": "Dedicated learner"
+      }
+    ],
+    "stats": [
+      {
+        "icon": "📊",
+        "label": "Overall Score",
+        "value": "74%",
+        "sub": "+6% vs last month",
+        "iconBg": "var(--pink-light)",
+        "iconColor": "var(--pink)",
+        "valueColor": "var(--pink)"
+      },
+      {
+        "icon": "📚",
+        "label": "Lessons Completed",
+        "value": "42",
+        "sub": "3 this week",
+        "iconBg": "var(--purple-light)",
+        "iconColor": "var(--purple)",
+        "valueColor": "var(--purple)"
+      },
+      {
+        "icon": "⏱️",
+        "label": "Study Time",
+        "value": "18h",
+        "sub": "2.4h avg / week",
+        "iconBg": "var(--blue-light)",
+        "iconColor": "var(--blue)",
+        "valueColor": "var(--blue)"
+      },
+      {
+        "icon": "🏆",
+        "label": "Next Goal",
+        "value": "C1",
+        "sub": "Est. 4 months",
+        "iconBg": "var(--amber-light)",
+        "iconColor": "var(--amber)",
+        "valueColor": "var(--amber)"
+      }
+    ],
+    "skills": [
+      {
+        "name": "Speaking",
+        "score": 78,
+        "cefr": "B2",
+        "icon": "🎙️",
+        "color": "#ff5ba4"
+      },
+      {
+        "name": "Listening",
+        "score": 62,
+        "cefr": "B1",
+        "icon": "👂",
+        "color": "#d63d85"
+      },
+      {
+        "name": "Reading",
+        "score": 90,
+        "cefr": "C1",
+        "icon": "📖",
+        "color": "#ff85bd"
+      },
+      {
+        "name": "Writing",
+        "score": 45,
+        "cefr": "B1",
+        "icon": "✍️",
+        "color": "#8b5cf6"
+      },
+      {
+        "name": "Vocabulary",
+        "score": 71,
+        "cefr": "B2",
+        "icon": "💬",
+        "color": "#3b82f6"
+      },
+      {
+        "name": "Grammar",
+        "score": 58,
+        "cefr": "B1",
+        "icon": "🔤",
+        "color": "#f59e0b"
+      }
+    ]
+  },
+  "cefrLevels": [
+    {
+      "code": "A1",
+      "label": "Beginner"
+    },
+    {
+      "code": "A2",
+      "label": "Elementary"
+    },
+    {
+      "code": "B1",
+      "label": "Intermediate"
+    },
+    {
+      "code": "B2",
+      "label": "Upper-Int."
+    },
+    {
+      "code": "C1",
+      "label": "Advanced"
+    },
+    {
+      "code": "C2",
+      "label": "Mastery"
+    }
+  ],
+  "sessions": [
+    {
+      "date": "Mar 18, 2026",
+      "tutor": "Maria S.",
+      "focus": "Speaking & Pronunciation",
+      "duration": "45 min",
+      "score": 82,
+      "level": "high"
+    },
+    {
+      "date": "Mar 14, 2026",
+      "tutor": "James K.",
+      "focus": "Business Writing",
+      "duration": "60 min",
+      "score": 64,
+      "level": "mid"
+    },
+    {
+      "date": "Mar 10, 2026",
+      "tutor": "Sofia R.",
+      "focus": "Listening Comprehension",
+      "duration": "45 min",
+      "score": 55,
+      "level": "low"
+    }
+  ]
+}

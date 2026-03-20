@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Language Skills Dashboard — Preply</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --pink: #ff5ba4;
+      --pink-light: #fff0f7;
+      --pink-dark: #d63d85;
+      --pink-mid: #ff85bd;
+      --black: #0d0d0d;
+      --gray-1: #f5f5f5;
+      --gray-2: #e8e8e8;
+      --gray-3: #a0a0a0;
+      --blue: #3b82f6;
+      --blue-light: #eff6ff;
+      --amber: #f59e0b;
+      --amber-light: #fffbeb;
+      --purple: #8b5cf6;
+      --purple-light: #f5f3ff;
+      --bg: #f7f7f7;
+      --surface: #ffffff;
+      --text: #0d0d0d;
+      --text-muted: #6b7280;
+      --border: #e8e8e8;
+      --radius: 16px;
+      --shadow: 0 2px 12px rgba(0,0,0,0.06);
+      --shadow-lg: 0 8px 32px rgba(0,0,0,0.10);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0 32px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 1px 0 var(--border);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-logo-dot {
+      width: 28px;
+      height: 28px;
+      background: var(--pink);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 15px;
+      font-weight: 800;
+    }
+
+    .nav-title {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    /* ── MAIN LAYOUT ── */
+    main {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 32px 24px 64px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    /* ── PROFILE CARD ── */
+    .profile-card {
+      background: linear-gradient(135deg, #ff5ba4 0%, #d63d85 100%);
+      border-radius: var(--radius);
+      padding: 32px;
+      color: white;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .profile-card::after {
+      content: '';
+      position: absolute;
+      top: -40px;
+      right: -40px;
+      width: 200px;
+      height: 200px;
+      background: rgba(255,255,255,0.07);
+      border-radius: 50%;
+    }
+
+    .profile-card::before {
+      content: '';
+      position: absolute;
+      bottom: -60px;
+      right: 80px;
+      width: 140px;
+      height: 140px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 50%;
+    }
+
+    .avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      border: 3px solid rgba(255,255,255,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      font-weight: 700;
+      flex-shrink: 0;
+      backdrop-filter: blur(4px);
+    }
+
+    .profile-info h1 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 4px;
+      color: black;
+    }
+
+    .profile-info p {
+      font-size: 14px;
+      opacity: 0.85;
+      margin-bottom: 16px;
+      color: black;
+    }
+
+    .profile-badges {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 20px;
+      padding: 5px 14px;
+      font-size: 13px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      backdrop-filter: blur(4px);
+      color: black;
+    }
+
+    .badge-icon { font-size: 15px; }
+
+    /* ── STATS ROW ── */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .stat-card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .stat-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      margin-bottom: 4px;
+    }
+
+    .stat-value {
+      font-size: 28px;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .stat-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* ── VIZ SECTION ── */
+    .viz-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .card-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card-title-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+
+    /* Radar chart */
+    .radar-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 300px;
+    }
+
+    /* Progress bars */
+    .skill-list {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .skill-row {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .skill-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .skill-name {
+      font-size: 13px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .skill-icon { font-size: 16px; }
+
+    .skill-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .skill-pct {
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .skill-cefr {
+      font-size: 10px;
+      font-weight: 600;
+      padding: 2px 7px;
+      border-radius: 20px;
+      background: var(--pink-light);
+      color: var(--pink-dark);
+    }
+
+    .bar-track {
+      height: 8px;
+      background: var(--border);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      border-radius: 999px;
+      width: 0%;
+      transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ── CEFR STRIP ── */
+    .cefr-card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .cefr-track {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      margin-top: 12px;
+    }
+
+    .cefr-track::before {
+      content: '';
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      right: 20px;
+      height: 4px;
+      background: var(--border);
+      z-index: 0;
+    }
+
+    .cefr-track::after {
+      content: '';
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: var(--progress-width, 60%);
+      height: 4px;
+      background: linear-gradient(90deg, var(--pink), var(--pink-dark));
+      z-index: 1;
+      border-radius: 2px;
+      transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .cefr-node {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .cefr-dot {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--border);
+      border: 3px solid var(--surface);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-muted);
+      transition: background 0.4s, color 0.4s, transform 0.3s, box-shadow 0.3s;
+    }
+
+    .cefr-dot.done {
+      background: var(--pink);
+      color: white;
+    }
+
+    .cefr-dot.current {
+      background: var(--pink);
+      color: white;
+      transform: scale(1.2);
+      box-shadow: 0 0 0 4px var(--pink-light);
+    }
+
+    .cefr-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .cefr-label.current { color: var(--pink-dark); }
+
+    .cefr-desc {
+      font-size: 10px;
+      color: var(--text-muted);
+      text-align: center;
+      max-width: 60px;
+    }
+
+    /* ── SESSIONS TABLE ── */
+    .sessions-card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 4px;
+    }
+
+    th {
+      text-align: left;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      padding: 8px 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    td {
+      padding: 14px 12px;
+      font-size: 13px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    tr:last-child td { border-bottom: none; }
+
+    .score-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .score-high { background: var(--pink-light); color: var(--pink-dark); }
+    .score-mid  { background: var(--amber-light); color: #92400e; }
+    .score-low  { background: #fef2f2; color: #991b1b; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .stats-row { grid-template-columns: repeat(2, 1fr); }
+      .viz-section { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .stats-row { grid-template-columns: 1fr 1fr; }
+      .profile-card { flex-direction: column; text-align: center; }
+      .profile-badges { justify-content: center; }
+      main { padding: 16px 12px 48px; }
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .profile-card, .stats-row, .viz-section, .cefr-card, .sessions-card {
+      animation: fadeUp 0.5s ease both;
+    }
+
+    .stats-row { animation-delay: 0.08s; }
+    .viz-section { animation-delay: 0.14s; }
+    .cefr-card { animation-delay: 0.20s; }
+    .sessions-card { animation-delay: 0.26s; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">
+    <div class="nav-logo-dot">P</div>
+    Preply
+  </a>
+  <span class="nav-title">Language Skills Dashboard</span>
+</nav>
+
+<main>
+
+  <!-- Profile -->
+  <div class="profile-card">
+    <div class="avatar" id="studentAvatar"></div>
+    <div class="profile-info">
+      <h1 id="studentName"></h1>
+      <p id="studentSubtitle"></p>
+      <div class="profile-badges" id="badgeList"></div>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-row" id="statsRow"></div>
+
+  <!-- Charts -->
+  <div class="viz-section">
+
+    <!-- Radar -->
+    <div class="card">
+      <div class="card-title">
+        <div class="card-title-icon" style="background: var(--pink-light);">🕸️</div>
+        Skills Overview
+      </div>
+      <div class="radar-wrap">
+        <canvas id="radarChart"></canvas>
+      </div>
+    </div>
+
+    <!-- Progress Bars -->
+    <div class="card">
+      <div class="card-title">
+        <div class="card-title-icon" style="background: var(--purple-light);">📈</div>
+        Skill Breakdown
+      </div>
+      <div class="skill-list" id="skillList"></div>
+    </div>
+
+  </div>
+
+  <!-- CEFR Timeline -->
+  <div class="cefr-card">
+    <div class="card-title">
+      <div class="card-title-icon" style="background: var(--amber-light);">🗺️</div>
+      CEFR Level Progress
+    </div>
+    <div class="cefr-track" id="cefrTrack"></div>
+  </div>
+
+  <!-- Recent Sessions -->
+  <div class="sessions-card">
+    <div class="card-title">
+      <div class="card-title-icon" style="background: var(--blue-light);">🗓️</div>
+      Recent Sessions
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Tutor</th>
+          <th>Focus Area</th>
+          <th>Duration</th>
+          <th>Score</th>
+        </tr>
+      </thead>
+      <tbody id="sessionsBody"></tbody>
+    </table>
+  </div>
+
+</main>
+
+<script>
+  async function loadDashboardData() {
+    try {
+      const response = await fetch("data/dashboard-data.json", { cache: "no-cache" });
+      if (!response.ok) {
+        throw new Error(`Request failed with status ${response.status}`);
+      }
+      const dashboardData = await response.json();
+      renderDashboard(dashboardData);
+    } catch (error) {
+      console.error('Failed to load dashboard data:', error);
+      displayDataError();
+    }
+  }
+
+  function renderDashboard({ student, cefrLevels, sessions }) {
+    if (!student) {
+      throw new Error('Student data missing');
+    }
+
+    populateProfile(student);
+    populateStats(student.stats || []);
+    renderRadarChart(student.skills || []);
+    renderSkillList(student.skills || []);
+    renderCefrTrack(Array.isArray(cefrLevels) ? cefrLevels : [], student.level);
+    renderSessions(Array.isArray(sessions) ? sessions : []);
+  }
+
+  function populateProfile(student) {
+    const avatar = document.getElementById('studentAvatar');
+    const nameEl = document.getElementById('studentName');
+    const subtitle = document.getElementById('studentSubtitle');
+    const badgeList = document.getElementById('badgeList');
+
+    const initials = student.initials || deriveInitials(student.name);
+    if (avatar) avatar.textContent = initials || '';
+    if (nameEl) nameEl.textContent = student.name || '—';
+
+    if (subtitle) {
+      const parts = [];
+      if (student.language) parts.push(`Learning ${student.language}`);
+      if (student.memberSince) parts.push(`Member since ${student.memberSince}`);
+      subtitle.textContent = parts.join(' · ');
+    }
+
+    if (badgeList) {
+      badgeList.innerHTML = '';
+      (student.badges || []).forEach(badge => {
+        const badgeEl = document.createElement('span');
+        badgeEl.className = 'badge';
+
+        const iconEl = document.createElement('span');
+        iconEl.className = 'badge-icon';
+        iconEl.textContent = badge.icon || '';
+
+        badgeEl.appendChild(iconEl);
+        badgeEl.appendChild(document.createTextNode(` ${badge.label || ''}`));
+        badgeList.appendChild(badgeEl);
+      });
+    }
+  }
+
+  function populateStats(stats) {
+    const container = document.getElementById('statsRow');
+    if (!container) return;
+
+    container.innerHTML = '';
+    (stats || []).forEach(stat => {
+      const card = document.createElement('div');
+      card.className = 'stat-card';
+
+      const iconDiv = document.createElement('div');
+      iconDiv.className = 'stat-icon';
+      iconDiv.style.background = stat.iconBg || 'var(--gray-1)';
+      iconDiv.style.color = stat.iconColor || 'var(--text)';
+      iconDiv.textContent = stat.icon || '';
+
+      const valueDiv = document.createElement('div');
+      valueDiv.className = 'stat-value';
+      valueDiv.style.color = stat.valueColor || stat.iconColor || 'var(--text)';
+      valueDiv.textContent = stat.value != null ? stat.value : '—';
+
+      const labelDiv = document.createElement('div');
+      labelDiv.className = 'stat-label';
+      labelDiv.textContent = stat.label || '';
+
+      const subDiv = document.createElement('div');
+      subDiv.className = 'stat-sub';
+      subDiv.textContent = stat.sub || '';
+
+      card.append(iconDiv, valueDiv, labelDiv, subDiv);
+      container.appendChild(card);
+    });
+  }
+
+  let radarChartInstance;
+
+  function renderRadarChart(skills) {
+    const ctx = document.getElementById('radarChart');
+    if (!ctx) return;
+    const chartCtx = ctx.getContext('2d');
+    if (!chartCtx) return;
+
+    if (radarChartInstance) {
+      radarChartInstance.destroy();
+    }
+
+    if (!Array.isArray(skills) || skills.length === 0) {
+      radarChartInstance = null;
+      return;
+    }
+
+    radarChartInstance = new Chart(chartCtx, {
+      type: 'radar',
+      data: {
+        labels: skills.map(skill => skill.name),
+        datasets: [{
+          label: 'Score',
+          data: skills.map(skill => skill.score),
+          fill: true,
+          backgroundColor: 'rgba(255, 91, 164, 0.12)',
+          borderColor: '#ff5ba4',
+          borderWidth: 2.5,
+          pointBackgroundColor: skills.map(skill => skill.color || '#ff5ba4'),
+          pointBorderColor: '#fff',
+          pointBorderWidth: 2,
+          pointRadius: 6,
+          pointHoverRadius: 8,
+        }],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: true,
+        animation: { duration: 1200, easing: 'easeInOutQuart' },
+        scales: {
+          r: {
+            min: 0,
+            max: 100,
+            ticks: {
+              stepSize: 25,
+              display: true,
+              font: { size: 10 },
+              color: '#94a3b8',
+              backdropColor: 'transparent',
+            },
+            grid: { color: '#e2e8f0' },
+            angleLines: { color: '#e2e8f0' },
+            pointLabels: {
+              font: { size: 12, weight: '600' },
+              color: '#1a202c',
+            },
+          },
+        },
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: context => ` ${context.raw}%`,
+            },
+          },
+        },
+      },
+    });
+  }
+
+  function renderSkillList(skills) {
+    const list = document.getElementById('skillList');
+    if (!list) return;
+
+    list.innerHTML = '';
+    if (!Array.isArray(skills)) return;
+
+    skills.forEach(skill => {
+      const row = document.createElement('div');
+      row.className = 'skill-row';
+      row.innerHTML = `
+        <div class="skill-header">
+          <span class="skill-name">
+            <span class="skill-icon">${skill.icon || ''}</span>${skill.name || ''}
+          </span>
+          <span class="skill-meta">
+            <span class="skill-pct" style="color:${skill.color || 'var(--text)'}">${skill.score != null ? skill.score : '—'}%</span>
+            <span class="skill-cefr">${skill.cefr || ''}</span>
+          </span>
+        </div>
+        <div class="bar-track">
+          <div class="bar-fill" data-width="${skill.score != null ? skill.score : 0}" style="background: linear-gradient(90deg, ${(skill.color || '#ff5ba4')}cc, ${skill.color || '#ff5ba4'});"></div>
+        </div>
+      `;
+      list.appendChild(row);
+    });
+
+    requestAnimationFrame(() => {
+      setTimeout(() => {
+        document.querySelectorAll('.bar-fill').forEach(bar => {
+          bar.style.width = bar.dataset.width + '%';
+        });
+      }, 200);
+    });
+  }
+
+  function renderCefrTrack(cefrLevels, currentLevel) {
+    const track = document.getElementById('cefrTrack');
+    if (!track) return;
+
+    const levels = Array.isArray(cefrLevels) ? cefrLevels : [];
+    track.innerHTML = '';
+
+    const segmentCount = Math.max(levels.length - 1, 1);
+    const currentIndex = levels.findIndex(level => level.code === currentLevel);
+    const progressWidth = currentIndex <= 0 ? 0 : (currentIndex / segmentCount) * 100;
+    track.style.setProperty('--progress-width', `${progressWidth}%`);
+
+    levels.forEach((level, index) => {
+      const node = document.createElement('div');
+      node.className = 'cefr-node';
+
+      const dot = document.createElement('div');
+      const isCurrent = level.code === currentLevel;
+      const isDone = index < currentIndex;
+      dot.className = 'cefr-dot';
+      if (isCurrent) {
+        dot.classList.add('current');
+        dot.textContent = '★';
+      } else if (isDone) {
+        dot.classList.add('done');
+        dot.textContent = '✓';
+      } else {
+        dot.textContent = level.code;
+      }
+
+      const label = document.createElement('span');
+      label.className = 'cefr-label';
+      if (isCurrent) label.classList.add('current');
+      label.textContent = level.code;
+
+      const desc = document.createElement('span');
+      desc.className = 'cefr-desc';
+      desc.textContent = level.label || '';
+
+      node.append(dot, label, desc);
+      track.appendChild(node);
+    });
+  }
+
+  function renderSessions(sessions) {
+    const tbody = document.getElementById('sessionsBody');
+    if (!tbody) return;
+
+    tbody.innerHTML = '';
+    (sessions || []).forEach(session => {
+      const tr = document.createElement('tr');
+      const scoreLevel = session.level || 'mid';
+      tr.innerHTML = `
+        <td>${session.date || ''}</td>
+        <td>${session.tutor || ''}</td>
+        <td>${session.focus || ''}</td>
+        <td>${session.duration || ''}</td>
+        <td><span class="score-pill score-${scoreLevel}">${session.score != null ? session.score : '—'}%</span></td>
+      `;
+      tbody.appendChild(tr);
+    });
+  }
+
+  function displayDataError() {
+    const main = document.querySelector('main');
+    if (!main) return;
+
+    main.innerHTML = `
+      <div class="card" style="max-width: 480px; margin: 64px auto; text-align: center;">
+        <h2 style="margin-bottom: 12px;">Unable to load dashboard data</h2>
+        <p style="color: var(--text-muted);">Ensure <code>data/dashboard-data.json</code> is available and that you are serving the files from an HTTP server.</p>
+      </div>
+    `;
+  }
+
+  function deriveInitials(name) {
+    if (!name) return '';
+    return name
+      .split(/\s+/)
+      .filter(Boolean)
+      .map(part => part[0])
+      .join('')
+      .substring(0, 2)
+      .toUpperCase();
+  }
+
+  loadDashboardData();
+</script>
+
+</body>
+</html>
