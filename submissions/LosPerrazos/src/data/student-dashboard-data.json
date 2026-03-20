@@ -1,0 +1,77 @@
+{
+  "student": {
+    "name": "Sofia Martinez",
+    "nativeLanguage": "Spanish",
+    "targetLanguage": "English",
+    "onboardedAt": "Mar 20, 2026",
+    "badges": [
+      { "icon": "🌍", "label": "Native: Spanish" },
+      { "icon": "🎯", "label": "Goal: Career" },
+      { "icon": "🤖", "label": "AI Onboarded" }
+    ]
+  },
+  "preferences": {
+    "goals": {
+      "goal": "Career & Business",
+      "inspiration": "Personal Challenge",
+      "topicFocus": "Business English",
+      "timeline": "3–6 months"
+    },
+    "tutor": {
+      "country": "United States",
+      "otherLanguages": ["Spanish"],
+      "teachingStyle": ["Encouraging", "Goal-Focused", "Structured"]
+    },
+    "scheduling": {
+      "availability": {
+        "Mon": ["Morning", "Evening"],
+        "Tue": [],
+        "Wed": ["Morning"],
+        "Thu": [],
+        "Fri": ["Afternoon", "Evening"],
+        "Sat": ["Morning", "Afternoon"],
+        "Sun": []
+      },
+      "budget": "$15–25 / lesson",
+      "lessonsPerWeek": 2,
+      "sessionDuration": "60 min"
+    }
+  },
+  "assessment": {
+    "overallLevel": "Intermediate",
+    "skills": [
+      { "name": "Speaking",   "icon": "🎙️", "level": "Intermediate", "score": 65, "color": "#ff5ba4" },
+      { "name": "Listening",  "icon": "👂",  "level": "Intermediate", "score": 58, "color": "#d63d85" },
+      { "name": "Vocabulary", "icon": "💬",  "level": "Beginner",     "score": 38, "color": "#3b82f6" },
+      { "name": "Grammar",    "icon": "🔤",  "level": "Beginner",     "score": 32, "color": "#f59e0b" }
+    ],
+    "strengths": [
+      { "icon": "🎙️", "text": "Natural conversational flow — you express ideas clearly and keep the dialogue going without long pauses" },
+      { "icon": "👂", "text": "Good listening comprehension in everyday topics and informal conversation" },
+      { "icon": "💡", "text": "Strong motivation and a crystal-clear goal — this will accelerate your progress significantly" }
+    ],
+    "improvements": [
+      { "icon": "📚", "text": "Vocabulary range — building business and formal vocabulary will unlock new professional opportunities" },
+      { "icon": "🔤", "text": "Grammar precision — small adjustments to tense and sentence structure will make you sound much more polished" }
+    ]
+  },
+  "motivation": {
+    "quote": "I want to feel confident in meetings and client presentations at work — English is holding me back from the career I deserve.",
+    "tags": [
+      { "icon": "💼", "label": "Career Growth" },
+      { "icon": "💪", "label": "Personal Challenge" },
+      { "icon": "🌟", "label": "Professional Confidence" }
+    ],
+    "timeline": "3–6 months",
+    "urgency": "High",
+    "type": "Career"
+  },
+  "tutorMatch": {
+    "count": 47,
+    "tutors": [
+      { "name": "Sarah K.",  "country": "🇺🇸 United States", "rating": 4.9, "reviews": 312, "price": "$22", "specialty": "Business English",      "speaksLanguage": "Spanish" },
+      { "name": "James W.",  "country": "🇺🇸 United States", "rating": 4.8, "reviews": 198, "price": "$18", "specialty": "Conversational English", "speaksLanguage": "Spanish" },
+      { "name": "Emily R.",  "country": "🇺🇸 United States", "rating": 5.0, "reviews": 87,  "price": "$25", "specialty": "Interview Prep",         "speaksLanguage": null }
+    ]
+  }
+}

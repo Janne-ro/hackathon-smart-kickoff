@@ -2,160 +2,69 @@
   "student": {
     "name": "Alex Johnson",
     "initials": "AJ",
-    "language": "English",
-    "memberSince": "Jan 2024",
-    "level": "B2",
+    "nativeLanguage": "Spanish",
+    "targetLanguage": "English",
+    "onboardedAt": "Mar 19, 2026",
     "badges": [
-      {
-        "icon": "🌍",
-        "label": "English"
-      },
-      {
-        "icon": "🎯",
-        "label": "Level B2"
-      },
-      {
-        "icon": "🔥",
-        "label": "14-day streak"
-      },
-      {
-        "icon": "⭐",
-        "label": "Dedicated learner"
-      }
-    ],
-    "stats": [
-      {
-        "icon": "📊",
-        "label": "Overall Score",
-        "value": "74%",
-        "sub": "+6% vs last month",
-        "iconBg": "var(--pink-light)",
-        "iconColor": "var(--pink)",
-        "valueColor": "var(--pink)"
-      },
-      {
-        "icon": "📚",
-        "label": "Lessons Completed",
-        "value": "42",
-        "sub": "3 this week",
-        "iconBg": "var(--purple-light)",
-        "iconColor": "var(--purple)",
-        "valueColor": "var(--purple)"
-      },
-      {
-        "icon": "⏱️",
-        "label": "Study Time",
-        "value": "18h",
-        "sub": "2.4h avg / week",
-        "iconBg": "var(--blue-light)",
-        "iconColor": "var(--blue)",
-        "valueColor": "var(--blue)"
-      },
-      {
-        "icon": "🏆",
-        "label": "Next Goal",
-        "value": "C1",
-        "sub": "Est. 4 months",
-        "iconBg": "var(--amber-light)",
-        "iconColor": "var(--amber)",
-        "valueColor": "var(--amber)"
-      }
+      { "icon": "🌍", "label": "Native: Spanish" },
+      { "icon": "🎯", "label": "Learning English" },
+      { "icon": "🤖", "label": "AI Onboarded" }
     ],
     "skills": [
-      {
-        "name": "Speaking",
-        "score": 78,
-        "cefr": "B2",
-        "icon": "🎙️",
-        "color": "#ff5ba4"
-      },
-      {
-        "name": "Listening",
-        "score": 62,
-        "cefr": "B1",
-        "icon": "👂",
-        "color": "#d63d85"
-      },
-      {
-        "name": "Reading",
-        "score": 90,
-        "cefr": "C1",
-        "icon": "📖",
-        "color": "#ff85bd"
-      },
-      {
-        "name": "Writing",
-        "score": 45,
-        "cefr": "B1",
-        "icon": "✍️",
-        "color": "#8b5cf6"
-      },
-      {
-        "name": "Vocabulary",
-        "score": 71,
-        "cefr": "B2",
-        "icon": "💬",
-        "color": "#3b82f6"
-      },
-      {
-        "name": "Grammar",
-        "score": 58,
-        "cefr": "B1",
-        "icon": "🔤",
-        "color": "#f59e0b"
-      }
+      { "name": "Speaking",   "score": 78, "cefr": "B2", "icon": "🎙️", "color": "#ff5ba4" },
+      { "name": "Listening",  "score": 62, "cefr": "B1", "icon": "👂",  "color": "#d63d85" },
+      { "name": "Reading",    "score": 90, "cefr": "C1", "icon": "📖",  "color": "#ff85bd" },
+      { "name": "Writing",    "score": 45, "cefr": "B1", "icon": "✍️",  "color": "#8b5cf6" },
+      { "name": "Vocabulary", "score": 71, "cefr": "B2", "icon": "💬",  "color": "#3b82f6" },
+      { "name": "Grammar",    "score": 58, "cefr": "B1", "icon": "🔤",  "color": "#f59e0b" }
     ]
   },
-  "cefrLevels": [
-    {
-      "code": "A1",
-      "label": "Beginner"
+  "onboarding": {
+    "retention": {
+      "label": "High",
+      "timeline": [
+        { "label": "After 1st Class", "score": 92, "color": "#10b981" },
+        { "label": "After 1 Week",    "score": 87, "color": "#ff5ba4" },
+        { "label": "After 1 Month",   "score": 74, "color": "#f59e0b" }
+      ],
+      "signals": [
+        { "icon": "💼", "text": "Strong career motivation" },
+        { "icon": "🎯", "text": "Clear, specific goals" },
+        { "icon": "😊", "text": "Positive sentiment throughout" },
+        { "icon": "⚡", "text": "High engagement during onboarding" }
+      ]
     },
-    {
-      "code": "A2",
-      "label": "Elementary"
+    "motivation": {
+      "goals": "Improve business English for job interviews and client presentations",
+      "type": "Career",
+      "timeline": "3–6 months",
+      "urgency": "High",
+      "tags": [
+        { "icon": "💼", "label": "Career" },
+        { "icon": "🗣️", "label": "Presentations" },
+        { "icon": "📝", "label": "Interviews" }
+      ]
     },
-    {
-      "code": "B1",
-      "label": "Intermediate"
+    "sentiment": {
+      "overall": "Positive",
+      "engagement": "High",
+      "signals": [
+        { "label": "Enthusiasm",   "value": 85, "icon": "🔥" },
+        { "label": "Confidence",   "value": 62, "icon": "💪" },
+        { "label": "Goal Clarity", "value": 90, "icon": "🎯" },
+        { "label": "Openness",     "value": 74, "icon": "🤝" }
+      ],
+      "notes": "High enthusiasm for career advancement. Some hesitation around formal writing suggests mild anxiety. Very confident in conversational settings. Voluntarily switched to English early — a strong retention signal."
     },
-    {
-      "code": "B2",
-      "label": "Upper-Int."
-    },
-    {
-      "code": "C1",
-      "label": "Advanced"
-    },
-    {
-      "code": "C2",
-      "label": "Mastery"
+    "tutorBrief": {
+      "suggestedFocus": [
+        { "icon": "💼", "text": "Business vocabulary & phraseology" },
+        { "icon": "✍️", "text": "Formal writing (emails, reports)" },
+        { "icon": "🎤", "text": "Interview Q&A practice" }
+      ],
+      "icebreaker": "Ask about their current role and the kinds of presentations they give — they're proud of their work and it builds rapport fast.",
+      "watchOut": "May feel self-conscious about grammar — frame corrections gently and celebrate progress.",
+      "aiSummary": "Alex is a motivated, career-driven learner with a clear objective: Business English for professional advancement. They have solid speaking skills (B2) but formal writing is the key gap. Start with a confidence-building speaking exercise before moving into writing tasks. High retention probability — keep content career-relevant from lesson one."
     }
-  ],
-  "sessions": [
-    {
-      "date": "Mar 18, 2026",
-      "tutor": "Maria S.",
-      "focus": "Speaking & Pronunciation",
-      "duration": "45 min",
-      "score": 82,
-      "level": "high"
-    },
-    {
-      "date": "Mar 14, 2026",
-      "tutor": "James K.",
-      "focus": "Business Writing",
-      "duration": "60 min",
-      "score": 64,
-      "level": "mid"
-    },
-    {
-      "date": "Mar 10, 2026",
-      "tutor": "Sofia R.",
-      "focus": "Listening Comprehension",
-      "duration": "45 min",
-      "score": 55,
-      "level": "low"
-    }
-  ]
+  }
 }
