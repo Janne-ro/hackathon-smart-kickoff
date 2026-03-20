@@ -73,6 +73,54 @@ We already collect most of this data during onboarding, this approach enhances i
 - Instant assessment without scheduling  
 - Tutor-ready summaries  
 
+### Student Dashboard — Final Feature List
+
+#### 1. Conversational AI Assessment (Intake Flow)
+- Starts in the student's **native language**, then invites switch to English for soft level signals.
+- Collects:
+  - Target language
+  - Goal (career / kids / exams / culture)
+  - Timeline (1–4 weeks → as long as it takes)
+  - Inspiration (travel / culture / music / family / challenge)
+  - Topic focus (conversational / beginner / intensive / business / American English)
+  - Current level (self-reported: beginner → fluent)
+  - Teaching style preferences (up to 3 traits)
+  - Tutor country preference
+  - Other languages tutor should speak
+  - Weekly availability (schedule)
+  - Budget / price range per lesson
+  - Lessons per week & session duration
+  - Prior learning experience
+
+#### 2. Editable Preferences Panel
+- Shows all collected filters as **editable chips**, grouped into:
+  - **Learning Goals:** goal, inspiration, topic focus, timeline
+  - **Tutor Preferences:** country, languages, teaching style
+  - **Scheduling & Budget:** availability grid, price range, frequency, duration
+
+#### 3. Proficiency Assessment
+- AI-generated analysis from the conversation:
+  - Skill bars: Speaking, Listening, Vocabulary, Grammar
+  - Level labels: Beginner / Intermediate / Advanced
+  - **Strengths:** 2–3 key positives
+  - **Areas to improve:** 2–3 framed as opportunity
+  - Overall level badge (e.g., Intermediate)
+
+#### 4. Motivation Summary
+- Friendly recap of AI understanding:
+  - Goal in their own words (quote-style)
+  - Inspiration tags
+  - Timeline / urgency
+
+#### 5. Tutor Match Preview
+- Teaser: “We found X tutors matching your profile”
+- 3 tutor cards (avatar, rating, price range, partially blurred) to build excitement
+
+#### 6. "Find My Professor" CTA
+- Large, prominent button
+- Subtitle: “Your personalized matches are ready”
+- Opens main Preply app with pre-filled filters
+
 ---
 
 ## Architecture

@@ -28,13 +28,51 @@ Finally, we organized the work into structured work packages, which were then di
 ## Prompting strategies 
 > "What prompting techniques worked well? What didn't? Share example prompts that led to breakthroughs."
 
+### Prompting techniques that worked well
+
+* **Few-Shot Prompting**: Providing a few illustrative examples within the prompt helped the AI understand the desired format, style, and reasoning steps, reducing misinterpretations.
+* **Prompt Iteration**: Repeatedly refining prompts based on AI output proved highly effective. Also asking the model to critique or improve its own response often led to more precise and actionable results.
+* **Role or Persona Framing**: Assigning the AI a specific role (e.g., “You are a coding expert”) improved the relevance of the output and kept the responses focused on the task.
+
+*Example prompt*: "Lets build a second dashboard for the student. 
+
+Lets plan the AI assesment first. 
+
+Preply already ask the following questions:  
+
+What do you want to learn?
+English (Language options) 
+[...]
+
+The idea is that the AI assistant also retrieves at least this information, in a conversational way of course. Other information migh also be asked.
+The things that are direct filters or options that the user selects, should be displayed in this dashboard so the user can change them in case that they were incorrect. 
+
+We should not show the retention score, instead, we should show the user a motivation assesment of their proficiency, showing things that he does well and also areas of inprovement. 
+
+Then a big button showing find my professor should be at the end to go to the main preply app, finalizing the diagnosis of the new student.  
+
+What do you think. Am i missing something? output a list of features for the student dashboard before start coding"
+
+### Prompting techniques that didn't work well
+
+* **Zero-Shot Prompting**: Asking the model to generate output without context or examples often produced incomplete or inconsistent results, requiring many iterations to correct.
+* **Single-Instruction Prompts for Complex Tasks**: Giving multi-step tasks in one instruction without breaking them down often led to misaligned outputs.
+
+*Example prompt*: " That already looks good but move the Find a professor button such that it is directly underneath the language skills section. Also change the colorscheme to pink/red (do research on the colorscheme of Preply to match). Finally, add something to help students understand their areas of improvement more."
+
 --- 
 
 ## Testing & iteration 
 > "How did you verify AI-generated code? Did you use test-driven development, manual testing, or AI-assisted debugging?"
 
-We used a combinaion of manual testing and AI-assisted debuging.
+We used a **combination of manual testing and AI-assisted debugging**, which allowed us to quickly identify edge cases and validate behavior against expected outcomes. One example where this really helped was in evaluating the expected calculation for the dashboards at the interface between the AI onboarding chat and the dashboards for which we used manual tests. Additionally, it assisted with iteratively refining both our conversational flows and retention prediction models for an optimized user experience. It is additionally noteworthy that we did not approve changes automatically but always read through the code and made sure that the it works as intended before adding it to the codebase. 
+
 ---
 
 ## Challenges & pivots
 > "Where did AI struggle? How did you course-correct?"
+
+There were mainly two challenges to the development with AI: 
+
+* At one point AI suggested to modify files in the Thymia repo. However we wanted to be able to run the code independently of local changes made to the repository. So to pivot we reiterated on the prompt and overall approach to make it more resilient to make our code more robust and modularly independent. 
+* Early on, we sometimes overused AI-generated code without fully understanding it, which made debugging difficult. We addressed this by being more intentional with prompts and verifying outputs step by step while focusing on code understanding. Additionally we incorporatied manual checks. This greatly strengthened our understanding of the underlying conceptual code logic which helped us a lot in debugging effectivly.
