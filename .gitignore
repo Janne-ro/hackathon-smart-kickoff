@@ -1,0 +1,19 @@
+# Cloned tool repos (infrastructure, not our code)
+vendor/
+
+# Environment / secrets
+.env
+.env.local
+env/
+
+# OS
+.DS_Store
+
+# Node
+node_modules/
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/

@@ -1,0 +1,135 @@
+diff --git a/node/conversation_store.js b/node/conversation_store.js
+index cf7854c..8c97f5d 100644
+--- a/node/conversation_store.js
++++ b/node/conversation_store.js
+@@ -153,9 +153,29 @@ logger.info(
+   `Conversation store initialized (max=${MAX_MESSAGES}, target=${TARGET_MESSAGES}, cleanup every ${CLEANUP_INTERVAL / 1000}s)`
+ );
+ 
++/**
++ * Get all messages for a given channel across all userIds.
++ * Keys are formatted as "appId:userId:channel" — we match by prefix and suffix.
++ */
++function getMessagesByChannel(appId, channel) {
++  const prefix = `${appId}:`;
++  const suffix = `:${channel}`;
++  const allMessages = [];
++
++  for (const [key, conv] of Object.entries(conversations)) {
++    if (key.startsWith(prefix) && key.endsWith(suffix)) {
++      allMessages.push(...conv.messages);
++    }
++  }
++
++  allMessages.sort((a, b) => (a.timestamp || 0) - (b.timestamp || 0));
++  return allMessages;
++}
++
+ module.exports = {
+   getOrCreateConversation,
+   saveMessage,
+   getMessages,
++  getMessagesByChannel,
+   cleanupOldConversations,
+ };
+diff --git a/node/custom_llm.js b/node/custom_llm.js
+index 023a3e5..1f98e57 100644
+--- a/node/custom_llm.js
++++ b/node/custom_llm.js
+@@ -17,6 +17,7 @@ const {
+   getMessages,
+ } = require('./conversation_store');
+ const { AudioSubscriber } = require('./audio_subscriber');
++const sessionReport = require('./session_report');
+ 
+ // Load environment variables
+ dotenv.config();
+@@ -166,6 +167,9 @@ app.post('/unregister-agent', (req, res) => {
+   // Stop audio subscriber session for this channel
+   audioSubscriber.stopSession(app_id, channel);
+ 
++  // Snapshot session data BEFORE cleanup destroys it
++  const report = sessionReport.generateReport(app_id, channel, entry.agentId, 'hangup_api');
++
+   // Destroy RTM session for this channel
+   try {
+     const rtm = require('./rtm_client');
+@@ -184,7 +188,7 @@ app.post('/unregister-agent', (req, res) => {
+   }
+ 
+   logger.info(`[UnregisterAgent] cleaned up ${app_id}:${channel} (agent=${entry.agentId})`);
+-  res.json({ success: true, agent_id: entry.agentId });
++  res.json({ success: true, agent_id: entry.agentId, report_id: report?.id || null });
+ });
+ 
+ // ─── Helpers ───
+@@ -911,6 +915,9 @@ function handleRTMPresence(channel, event) {
+ 
+   audioSubscriber.stopSession(appId, channel);
+ 
++  // Snapshot session data BEFORE cleanup destroys it
++  sessionReport.generateReport(appId, channel, entry.agentId, isClient ? 'client_leave' : 'agent_leave');
++
+   // Destroy RTM session (async, fire-and-forget)
+   try {
+     const rtm = require('./rtm_client');
+@@ -1042,6 +1049,24 @@ process.on('unhandledRejection', (reason) => {
+   logger.error('Unhandled rejection (server continues):', reason);
+ });
+ 
++// ─── Session Report Endpoints ───
++
++app.get('/session-reports', (req, res) => {
++  res.json(sessionReport.listReports());
++});
++
++app.get('/session-reports/latest/:channel', (req, res) => {
++  const report = sessionReport.getLatestReportByChannel(req.params.channel);
++  if (!report) return res.status(404).json({ error: 'No report found for this channel' });
++  res.json(report);
++});
++
++app.get('/session-reports/:id', (req, res) => {
++  const report = sessionReport.getReport(req.params.id);
++  if (!report) return res.status(404).json({ error: 'Report not found' });
++  res.json(report);
++});
++
+ // Start server
+ app.listen(port, () => {
+   logger.info(`Server running on port ${port}`);
+diff --git a/node/integrations/thymia/thymia.js b/node/integrations/thymia/thymia.js
+index 32ddc72..2db4d5e 100644
+--- a/node/integrations/thymia/thymia.js
++++ b/node/integrations/thymia/thymia.js
+@@ -600,7 +600,7 @@ module.exports = {
+           date_of_birth: '1990-01-01',
+           birth_sex: 'MALE',
+           biomarkers: ['helios', 'apollo'],
+-          policies: ['passthrough', 'agora_safety_analysis'],
++          policies: ['passthrough', 'safety_analysis'],
+           apiKey,
+         });
+         logger.info(`[AgentRegistered] Early-started Thymia for ${key}`);
+@@ -651,7 +651,7 @@ module.exports = {
+           date_of_birth: '1990-01-01',
+           birth_sex: 'MALE',
+           biomarkers: ['helios', 'apollo'],
+-          policies: ['passthrough', 'agora_safety_analysis'],
++          policies: ['passthrough', 'safety_analysis'],
+           apiKey,
+         });
+       }
+diff --git a/node/integrations/thymia/thymia_client.js b/node/integrations/thymia/thymia_client.js
+index f3bac01..2d1fd3f 100644
+--- a/node/integrations/thymia/thymia_client.js
++++ b/node/integrations/thymia/thymia_client.js
+@@ -75,7 +75,7 @@ class ThymiaClient {
+       birth_sex: birthSex,
+       language: config.language || 'en',
+       biomarkers: config.biomarkers || (process.env.THYMIA_BIOMARKERS || 'helios,apollo').split(','),
+-      policies: config.policies || (process.env.THYMIA_POLICIES || 'passthrough,agora_safety_analysis').split(','),
++      policies: config.policies || (process.env.THYMIA_POLICIES || 'passthrough,safety_analysis').split(','),
+       sample_rate: config.sample_rate || 16000,
+       format: config.format || 'pcm16',
+       channels: config.channels || 1,

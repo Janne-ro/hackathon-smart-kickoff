@@ -1,0 +1,70 @@
+diff --git a/react-video-client-avatar/components/VideoAvatarClient.tsx b/react-video-client-avatar/components/VideoAvatarClient.tsx
+index 4a23ab8..b6afa6c 100644
+--- a/react-video-client-avatar/components/VideoAvatarClient.tsx
++++ b/react-video-client-avatar/components/VideoAvatarClient.tsx
+@@ -85,6 +85,7 @@ export function VideoAvatarClient() {
+   );
+   const [sessionAgentId, setSessionAgentId] = useState<string | null>(null);
+   const [sessionPayload, setSessionPayload] = useState<object | null>(null);
++  const [sessionReport, setSessionReport] = useState<any>(null);
+ 
+   // Read URL parameters on mount
+   useEffect(() => {
+@@ -328,6 +329,10 @@ export function VideoAvatarClient() {
+   }, [autoConnect]);
+ 
+   const handleStop = async () => {
++    const channel = channelRef.current;
++    const currentAgentId = agentId;
++    const currentProfile = profile.trim() || "VIDEO";
++
+     // Stop and close local video track to release camera hardware
+     if (localVideoTrack) {
+       localVideoTrack.stop();
+@@ -335,9 +340,46 @@ export function VideoAvatarClient() {
+       setLocalVideoTrack(null);
+       setIsLocalVideoActive(false);
+     }
++
++    // Call hangup BEFORE leaveChannel so the backend triggers /unregister-agent
++    // which generates the session report while data is still in memory
++    if (currentAgentId && channel) {
++      try {
++        const hangupParams = new URLSearchParams({
++          agent_id: currentAgentId,
++          channel: channel,
++          profile: currentProfile,
++        });
++        await fetch(`${backendUrl}/hangup-agent?${hangupParams}`);
++      } catch (e) {
++        console.error("[Hangup] Failed:", e);
++      }
++    }
++
+     await leaveChannel();
+     setSessionAgentId(null);
+     setSessionPayload(null);
++
++    // Fetch session report from custom LLM server
++    if (channel) {
++      try {
++        // Wait for the unregister thread to complete and report to be written
++        await new Promise((r) => setTimeout(r, 2000));
++        const reportResp = await fetch(
++          `http://localhost:8100/session-reports/latest/${channel}`
++        );
++        if (reportResp.ok) {
++          const report = await reportResp.json();
++          console.log("[SessionReport]", JSON.stringify(report, null, 2));
++          setSessionReport(report);
++        } else {
++          console.warn("[SessionReport] No report found for channel", channel);
++        }
++      } catch (e) {
++        console.error("[SessionReport] Failed to fetch report:", e);
++      }
++    }
++
+     if (returnUrl) {
+       window.location.href = returnUrl;
+       return;
