@@ -33,8 +33,8 @@
 
 ## Workstreams & Tasks
 1) Conversation design & schema  
-   - Finalize scripted flow (native warmup → goals → target-language probe → wrap-up).  
-   - Author system/developer prompts and enforce JSON output schema (skills, strengths, focus areas, retention_confidence, sentiment, vitals). Store in `submissions/LosPerrazos/prompts/`.
+   - Finalize scripted flow (native warmup → goals → target-language probe → wrap-up) covering: target language, goals, timeline, inspiration, topic focus, current level, teaching style prefs, tutor country/language prefs, weekly availability, budget/price range, lesson frequency, lesson duration, prior experience, timezone.  
+   - Author system/developer prompts and enforce JSON output schema (skills + CEFR badge, strengths, focus areas, motivation quote/tags, retention_confidence for internal use, sentiment, vitals, budget/frequency/duration, tutor_match preview with count + 3 teaser cards). Store in `submissions/LosPerrazos/prompts/`.
 
 2) Backend & middleware  
    - Start from `agent-samples` backend; if custom prompts/tooling needed, route through `server-custom-llm`.  
@@ -55,7 +55,8 @@
 
 6) Dashboard wiring  
    - Replace static `src/data/dashboard-data.json` with backend-generated JSON.  
-   - Add fetch on load/refresh; keep existing styling and components.
+   - Add fetch on load/refresh; keep existing styling and components.  
+   - Render new sections: CEFR badge + per-skill bars, motivation/goal summary, editable chips (learning goals, tutor preferences, scheduling & budget), tutor match teaser (count + 3 blurred cards), and CTA “Find My Professor”.
 
 7) Testing & resilience  
    - Health checks: token generation, ConvoAI join, Thymia call, (optional) Shen call.  
