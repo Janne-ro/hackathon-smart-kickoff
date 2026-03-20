@@ -1,77 +1,155 @@
 {
   "student": {
-    "name": "Sofia Martinez",
-    "nativeLanguage": "Spanish",
-    "targetLanguage": "English",
-    "onboardedAt": "Mar 20, 2026",
-    "badges": [
-      { "icon": "🌍", "label": "Native: Spanish" },
-      { "icon": "🎯", "label": "Goal: Career" },
-      { "icon": "🤖", "label": "AI Onboarded" }
-    ]
+    "name": "Student",
+    "nativeLanguage": "English",
+    "targetLanguage": "Polish",
+    "onboardedAt": "Mar 21, 2026",
+    "badges": []
   },
   "preferences": {
     "goals": {
-      "goal": "Career & Business",
-      "inspiration": "Personal Challenge",
-      "topicFocus": "Business English",
-      "timeline": "3–6 months"
+      "goal": "Personal Enrichment",
+      "inspiration": "Cultural Interest",
+      "topicFocus": "Basic Polish",
+      "timeline": "3-6 months"
     },
     "tutor": {
-      "country": "United States",
-      "otherLanguages": ["Spanish"],
-      "teachingStyle": ["Encouraging", "Goal-Focused", "Structured"]
+      "country": "Poland",
+      "otherLanguages": [
+        "English"
+      ],
+      "teachingStyle": [
+        "Supportive",
+        "Patient",
+        "Structured"
+      ]
     },
     "scheduling": {
       "availability": {
-        "Mon": ["Morning", "Evening"],
-        "Tue": [],
-        "Wed": ["Morning"],
-        "Thu": [],
-        "Fri": ["Afternoon", "Evening"],
-        "Sat": ["Morning", "Afternoon"],
-        "Sun": []
+        "Mon": [
+          "Evening"
+        ],
+        "Tue": [
+          "Evening"
+        ],
+        "Wed": [
+          "Evening"
+        ],
+        "Thu": [
+          "Evening"
+        ],
+        "Fri": [
+          "Evening"
+        ],
+        "Sat": [
+          "Morning",
+          "Afternoon"
+        ],
+        "Sun": [
+          "Morning",
+          "Afternoon"
+        ]
       },
-      "budget": "$15–25 / lesson",
+      "budget": "$15-25 / lesson",
       "lessonsPerWeek": 2,
       "sessionDuration": "60 min"
     }
   },
   "assessment": {
-    "overallLevel": "Intermediate",
+    "overallLevel": "Beginner",
     "skills": [
-      { "name": "Speaking",   "icon": "🎙️", "level": "Intermediate", "score": 65, "color": "#ff5ba4" },
-      { "name": "Listening",  "icon": "👂",  "level": "Intermediate", "score": 58, "color": "#d63d85" },
-      { "name": "Vocabulary", "icon": "💬",  "level": "Beginner",     "score": 38, "color": "#3b82f6" },
-      { "name": "Grammar",    "icon": "🔤",  "level": "Beginner",     "score": 32, "color": "#f59e0b" }
+      {
+        "name": "Speaking",
+        "icon": "🎙️",
+        "level": "Beginner",
+        "score": 40,
+        "color": "#ff5ba4"
+      },
+      {
+        "name": "Listening",
+        "icon": "👂",
+        "level": "Intermediate",
+        "score": 50,
+        "color": "#d63d85"
+      },
+      {
+        "name": "Vocabulary",
+        "icon": "💬",
+        "level": "Beginner",
+        "score": 45,
+        "color": "#3b82f6"
+      },
+      {
+        "name": "Grammar",
+        "icon": "🔤",
+        "level": "Beginner",
+        "score": 40,
+        "color": "#f59e0b"
+      }
     ],
     "strengths": [
-      { "icon": "🎙️", "text": "Natural conversational flow — you express ideas clearly and keep the dialogue going without long pauses" },
-      { "icon": "👂", "text": "Good listening comprehension in everyday topics and informal conversation" },
-      { "icon": "💡", "text": "Strong motivation and a crystal-clear goal — this will accelerate your progress significantly" }
+      {
+        "icon": "👂",
+        "text": "Good listening comprehension"
+      }
     ],
     "improvements": [
-      { "icon": "📚", "text": "Vocabulary range — building business and formal vocabulary will unlock new professional opportunities" },
-      { "icon": "🔤", "text": "Grammar precision — small adjustments to tense and sentence structure will make you sound much more polished" }
+      {
+        "icon": "🎙️",
+        "text": "Improve speaking fluency"
+      },
+      {
+        "icon": "🔤",
+        "text": "Enhance grammar accuracy"
+      }
     ]
   },
   "motivation": {
-    "quote": "I want to feel confident in meetings and client presentations at work — English is holding me back from the career I deserve.",
+    "quote": "I want to learn Polish to connect more with its culture and maybe travel there someday.",
     "tags": [
-      { "icon": "💼", "label": "Career Growth" },
-      { "icon": "💪", "label": "Personal Challenge" },
-      { "icon": "🌟", "label": "Professional Confidence" }
+      {
+        "icon": "🌍",
+        "label": "Cultural Interest"
+      },
+      {
+        "icon": "✈️",
+        "label": "Travel"
+      }
     ],
-    "timeline": "3–6 months",
-    "urgency": "High",
-    "type": "Career"
+    "timeline": "3-6 months",
+    "urgency": "Medium",
+    "type": "Personal"
   },
   "tutorMatch": {
-    "count": 47,
+    "count": 3,
     "tutors": [
-      { "name": "Sarah K.",  "country": "🇺🇸 United States", "rating": 4.9, "reviews": 312, "price": "$22", "specialty": "Business English",      "speaksLanguage": "Spanish" },
-      { "name": "James W.",  "country": "🇺🇸 United States", "rating": 4.8, "reviews": 198, "price": "$18", "specialty": "Conversational English", "speaksLanguage": "Spanish" },
-      { "name": "Emily R.",  "country": "🇺🇸 United States", "rating": 5.0, "reviews": 87,  "price": "$25", "specialty": "Interview Prep",         "speaksLanguage": null }
+      {
+        "name": "Anna K.",
+        "country": "🇵🇱 Poland",
+        "rating": 4.8,
+        "reviews": 120,
+        "price": "$20",
+        "specialty": "Conversational Polish",
+        "speaksLanguage": "English"
+      },
+      {
+        "name": "Jakub S.",
+        "country": "🇵🇱 Poland",
+        "rating": 4.7,
+        "reviews": 98,
+        "price": "$18",
+        "specialty": "Beginner Polish",
+        "speaksLanguage": "English"
+      },
+      {
+        "name": "Marta Z.",
+        "country": "🇵🇱 Poland",
+        "rating": 4.9,
+        "reviews": 150,
+        "price": "$22",
+        "specialty": "Polish for Travelers",
+        "speaksLanguage": "English"
+      }
     ]
   }
 }

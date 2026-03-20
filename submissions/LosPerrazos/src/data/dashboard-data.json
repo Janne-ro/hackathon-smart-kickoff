@@ -1,68 +1,125 @@
 {
   "student": {
-    "name": "Alex Johnson",
-    "initials": "AJ",
-    "nativeLanguage": "Spanish",
-    "targetLanguage": "English",
-    "onboardedAt": "Mar 19, 2026",
-    "badges": [
-      { "icon": "🌍", "label": "Native: Spanish" },
-      { "icon": "🎯", "label": "Learning English" },
-      { "icon": "🤖", "label": "AI Onboarded" }
-    ],
+    "name": "Student",
+    "initials": "ST",
+    "nativeLanguage": "English",
+    "targetLanguage": "Polish",
+    "onboardedAt": "Mar 21, 2026",
+    "badges": [],
     "skills": [
-      { "name": "Speaking",   "score": 78, "cefr": "B2", "icon": "🎙️", "color": "#ff5ba4" },
-      { "name": "Listening",  "score": 62, "cefr": "B1", "icon": "👂",  "color": "#d63d85" },
-      { "name": "Vocabulary", "score": 71, "cefr": "B2", "icon": "💬",  "color": "#3b82f6" },
-      { "name": "Grammar",    "score": 58, "cefr": "B1", "icon": "🔤",  "color": "#f59e0b" }
+      {
+        "name": "Speaking",
+        "score": 40,
+        "cefr": "A2",
+        "icon": "🎙️",
+        "color": "#ff5ba4"
+      },
+      {
+        "name": "Listening",
+        "score": 50,
+        "cefr": "B1",
+        "icon": "👂",
+        "color": "#d63d85"
+      },
+      {
+        "name": "Vocabulary",
+        "score": 45,
+        "cefr": "A2",
+        "icon": "💬",
+        "color": "#3b82f6"
+      },
+      {
+        "name": "Grammar",
+        "score": 40,
+        "cefr": "A2",
+        "icon": "🔤",
+        "color": "#f59e0b"
+      }
     ]
   },
   "onboarding": {
     "retention": {
-      "label": "High",
+      "label": "Medium",
       "timeline": [
-        { "label": "After 1st Class", "score": 92, "color": "#10b981" },
-        { "label": "After 1 Week",    "score": 87, "color": "#ff5ba4" },
-        { "label": "After 1 Month",   "score": 74, "color": "#f59e0b" }
+        {
+          "label": "After 1st Class",
+          "score": 70,
+          "color": "#10b981"
+        },
+        {
+          "label": "After 1 Week",
+          "score": 60,
+          "color": "#ff5ba4"
+        },
+        {
+          "label": "After 1 Month",
+          "score": 50,
+          "color": "#f59e0b"
+        }
       ],
       "signals": [
-        { "icon": "💼", "text": "Strong career motivation" },
-        { "icon": "🎯", "text": "Clear, specific goals" },
-        { "icon": "😊", "text": "Positive sentiment throughout" },
-        { "icon": "⚡", "text": "High engagement during onboarding" }
+        {
+          "icon": "📈",
+          "text": "Moderate engagement with language learning"
+        },
+        {
+          "icon": "🎯",
+          "text": "Clear goal to learn Polish"
+        }
       ]
     },
     "motivation": {
-      "goals": "Improve business English for job interviews and client presentations",
-      "type": "Career",
-      "timeline": "3–6 months",
-      "urgency": "High",
+      "goals": "The student wants to improve their Polish for personal reasons, possibly related to cultural interest or travel.",
+      "type": "Personal",
+      "timeline": "3-6 months",
+      "urgency": "Medium",
       "tags": [
-        { "icon": "💼", "label": "Career" },
-        { "icon": "🗣️", "label": "Presentations" },
-        { "icon": "📝", "label": "Interviews" }
+        {
+          "icon": "🌍",
+          "label": "Cultural Interest"
+        },
+        {
+          "icon": "✈️",
+          "label": "Travel"
+        }
       ]
     },
     "sentiment": {
-      "overall": "Positive",
-      "engagement": "High",
+      "overall": "Mixed",
+      "engagement": "Medium",
       "signals": [
-        { "label": "Enthusiasm",   "value": 85, "icon": "🔥" },
-        { "label": "Confidence",   "value": 62, "icon": "💪" },
-        { "label": "Goal Clarity", "value": 90, "icon": "🎯" },
-        { "label": "Openness",     "value": 74, "icon": "🤝" }
+        {
+          "label": "Frustration",
+          "value": 70,
+          "icon": "😟"
+        },
+        {
+          "label": "Confusion",
+          "value": 60,
+          "icon": "🤔"
+        },
+        {
+          "label": "Surprise",
+          "value": 50,
+          "icon": "😲"
+        }
       ],
-      "notes": "High enthusiasm for career advancement. Some hesitation around formal writing suggests mild anxiety. Very confident in conversational settings. Voluntarily switched to English early — a strong retention signal."
+      "notes": "The student expressed significant frustration and confusion during the session, indicating a need for supportive and patient guidance."
     },
     "tutorBrief": {
       "suggestedFocus": [
-        { "icon": "💼", "text": "Business vocabulary & phraseology" },
-        { "icon": "✍️", "text": "Formal writing (emails, reports)" },
-        { "icon": "🎤", "text": "Interview Q&A practice" }
+        {
+          "icon": "🔤",
+          "text": "Focus on basic grammar structures"
+        },
+        {
+          "icon": "💬",
+          "text": "Expand vocabulary related to everyday situations"
+        }
       ],
-      "icebreaker": "Ask about their current role and the kinds of presentations they give — they're proud of their work and it builds rapport fast.",
-      "watchOut": "May feel self-conscious about grammar — frame corrections gently and celebrate progress.",
-      "aiSummary": "Alex is a motivated, career-driven learner with a clear objective: Business English for professional advancement. They have solid speaking skills (B2) but formal writing is the key gap. Start with a confidence-building speaking exercise before moving into writing tasks. High retention probability — keep content career-relevant from lesson one."
+      "icebreaker": "Ask about the student's favorite Polish cultural aspects or places they wish to visit.",
+      "watchOut": "The student may become easily frustrated with complex explanations; keep instructions simple and clear.",
+      "aiSummary": "The student is learning Polish, likely for personal enrichment or travel. They expressed frustration and confusion, suggesting they may need a supportive and patient approach. They have a moderate level of engagement and motivation, with a medium urgency to progress."
     }
   }
 }
