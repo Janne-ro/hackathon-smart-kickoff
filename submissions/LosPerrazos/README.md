@@ -73,6 +73,47 @@ We already collect most of this data during onboarding, this approach enhances i
 - Instant assessment without scheduling  
 - Tutor-ready summaries  
 
+### Session Report System — Final Feature List
+
+#### 1. Session Snapshot Generation
+- Creates a complete session report at the end-of-session 
+- Includes:
+  - Transcript (all messages)
+  - Biomarkers (Thymia)
+  - Session metadata (channel, appId, agentId, endReason)
+- Generates unique report IDs per session
+
+#### 2. Idempotent Report Handling
+- Prevents duplicate reports within a **5-second window per channel**
+- Returns the latest report if re-triggered too quickly
+
+#### 3. Transcript Structuring
+- Normalizes messages into a clean, consistent format:
+  - `role`, `content`, `timestamp`
+  - Optional tool call data
+- Ensures reports are reliable and easy to process
+
+#### 4. Session Timing & Duration
+- Automatically calculates:
+  - Start time (first message)
+  - End time (report generation)
+  - Total duration in seconds
+- Handles missing timestamps gracefully
+
+#### 5. Biomarker Integration (Thymia)
+- Attaches Thymia session metrics to each report
+- Fails safely without interrupting report creation
+
+#### 6. Storage (Memory + Disk)
+- Caches recent reports in memory (max 50, oldest removed)
+- Persists reports as JSON files in `./session-reports/`
+
+#### 7. Report Access APIs
+- Retrieve individual reports (`getReport`)
+- Get latest report per channel
+- List summarized reports (duration, size, biomarker presence)
+
+
 ### Student Dashboard — Final Feature List
 
 #### 1. Conversational AI Assessment (Intake Flow)
