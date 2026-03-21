@@ -1,0 +1,5 @@
+.python-version
+pyproject.toml
+requirements.txt
+setup.sh
+uv.lock
