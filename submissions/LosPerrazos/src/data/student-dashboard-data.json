@@ -6,17 +6,17 @@
     "onboardedAt": "Mar 21, 2026",
     "badges": [
       {
-        "icon": "🌟",
-        "label": "New Learner"
+        "icon": "🎯",
+        "label": "Goal Setter"
       }
     ]
   },
   "preferences": {
     "goals": {
-      "goal": "Cultural Integration",
-      "inspiration": "Relocation",
-      "topicFocus": "Conversational Spanish",
-      "timeline": "3–6 months"
+      "goal": "Career & Business",
+      "inspiration": "Career Advancement",
+      "topicFocus": "Business Spanish",
+      "timeline": "6-12 months"
     },
     "tutor": {
       "country": "Spain",
@@ -25,8 +25,8 @@
       ],
       "teachingStyle": [
         "Encouraging",
-        "Conversational",
-        "Structured"
+        "Goal-Focused",
+        "Interactive"
       ]
     },
     "scheduling": {
@@ -47,16 +47,14 @@
           "Evening"
         ],
         "Sat": [
-          "Morning",
-          "Afternoon"
+          "Morning"
         ],
         "Sun": [
-          "Morning",
-          "Afternoon"
+          "Morning"
         ]
       },
-      "budget": "$15–25 / lesson",
-      "lessonsPerWeek": 3,
+      "budget": "$20-30 / lesson",
+      "lessonsPerWeek": 2,
       "sessionDuration": "60 min"
     }
   },
@@ -67,96 +65,96 @@
         "name": "Speaking",
         "icon": "🎙️",
         "level": "Beginner",
-        "score": 40,
+        "score": 20,
         "color": "#ff5ba4"
       },
       {
         "name": "Listening",
         "icon": "👂",
         "level": "Beginner",
-        "score": 50,
+        "score": 25,
         "color": "#d63d85"
       },
       {
         "name": "Vocabulary",
         "icon": "💬",
         "level": "Beginner",
-        "score": 45,
+        "score": 30,
         "color": "#3b82f6"
       },
       {
         "name": "Grammar",
         "icon": "🔤",
         "level": "Beginner",
-        "score": 40,
+        "score": 15,
         "color": "#f59e0b"
       }
     ],
     "strengths": [
       {
-        "icon": "😊",
-        "text": "Positive attitude"
+        "icon": "💬",
+        "text": "Basic vocabulary knowledge"
       },
       {
-        "icon": "🔥",
-        "text": "High motivation"
+        "icon": "🔍",
+        "text": "Clear learning goals"
       }
     ],
     "improvements": [
       {
-        "icon": "🔤",
-        "text": "Expand vocabulary"
+        "icon": "🎙️",
+        "text": "Speaking fluency"
       },
       {
-        "icon": "🎙️",
-        "text": "Increase speaking practice"
+        "icon": "👂",
+        "text": "Listening comprehension"
       }
     ]
   },
   "motivation": {
-    "quote": "I want to learn Spanish because I recently moved to Barcelona and want to integrate into the local culture.",
+    "quote": "I want to learn Spanish to open up more career opportunities.",
     "tags": [
       {
-        "icon": "🏠",
-        "label": "Relocation"
+        "icon": "💼",
+        "label": "Career"
       },
       {
-        "icon": "🌍",
-        "label": "Cultural Integration"
+        "icon": "⏳",
+        "label": "Medium Urgency"
       }
     ],
-    "timeline": "3–6 months",
+    "timeline": "6-12 months",
     "urgency": "Medium",
-    "type": "Personal"
+    "type": "Career"
   },
   "tutorMatch": {
     "count": 3,
     "tutors": [
       {
-        "name": "Maria G.",
+        "name": "Carlos M.",
         "country": "🇪🇸 Spain",
         "rating": 4.8,
         "reviews": 120,
-        "price": "$20",
+        "price": "$25",
+        "specialty": "Business Spanish",
+        "speaksLanguage": "English"
+      },
+      {
+        "name": "Lucia G.",
+        "country": "🇪🇸 Spain",
+        "rating": 4.7,
+        "reviews": 98,
+        "price": "$22",
         "specialty": "Conversational Spanish",
         "speaksLanguage": "English"
       },
       {
-        "name": "Carlos R.",
-        "country": "🇪🇸 Spain",
-        "rating": 4.7,
-        "reviews": 98,
-        "price": "$18",
-        "specialty": "Beginner Spanish",
-        "speaksLanguage": "English"
-      },
-      {
-        "name": "Ana L.",
-        "country": "🇪🇸 Spain",
+        "name": "Miguel A.",
+        "country": "🇲🇽 Mexico",
         "rating": 4.9,
         "reviews": 150,
-        "price": "$22",
-        "specialty": "Cultural Integration",
+        "price": "$28",
+        "specialty": "Spanish for Professionals",
         "speaksLanguage": "English"
       }
     ]

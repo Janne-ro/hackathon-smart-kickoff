@@ -632,7 +632,7 @@
         greeting: greeting,
         returnurl: returnUrl
       });
-      window.location.href = "http://localhost:8084/?" + params.toString();
+      window.location.href = "https://properly-ribbon-scotland-consultation.trycloudflare.com/?" + params.toString();
     }
 
     // ── Post-call processing ──
@@ -656,7 +656,7 @@
       // Show processing overlay
       document.getElementById("processingOverlay").style.display = "flex";
 
-      var reportUrl = "http://localhost:8100/session-reports/latest/" + encodeURIComponent(channel);
+      var reportUrl = "https://streets-dog-slide-savings.trycloudflare.com/session-reports/latest/" + encodeURIComponent(channel);
 
       // Poll for the session report (the unregister/report-generation may still be in progress)
       var attempt = 0;
@@ -672,7 +672,7 @@
           .then(function(report) {
             console.log("[PostCall] Got session report:", report.id);
             // Now generate dashboards
-            return fetch("http://localhost:8100/generate-dashboards", {
+            return fetch("https://streets-dog-slide-savings.trycloudflare.com/generate-dashboards", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify(report)

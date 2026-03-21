@@ -7,35 +7,35 @@
     "onboardedAt": "Mar 21, 2026",
     "badges": [
       {
-        "icon": "🌟",
-        "label": "New Learner"
+        "icon": "🎯",
+        "label": "Goal Setter"
       }
     ],
     "skills": [
       {
         "name": "Speaking",
-        "score": 40,
+        "score": 20,
         "cefr": "A1",
         "icon": "🎙️",
         "color": "#ff5ba4"
       },
       {
         "name": "Listening",
-        "score": 50,
+        "score": 25,
         "cefr": "A1",
         "icon": "👂",
         "color": "#d63d85"
       },
       {
         "name": "Vocabulary",
-        "score": 45,
+        "score": 30,
         "cefr": "A1",
         "icon": "💬",
         "color": "#3b82f6"
       },
       {
         "name": "Grammar",
-        "score": 40,
+        "score": 15,
         "cefr": "A1",
         "icon": "🔤",
         "color": "#f59e0b"
@@ -44,91 +44,87 @@
   },
   "onboarding": {
     "retention": {
-      "label": "High",
+      "label": "Medium",
       "timeline": [
         {
           "label": "After 1st Class",
-          "score": 90,
+          "score": 70,
           "color": "#10b981"
         },
         {
           "label": "After 1 Week",
-          "score": 85,
+          "score": 50,
           "color": "#ff5ba4"
         },
         {
           "label": "After 1 Month",
-          "score": 80,
+          "score": 40,
           "color": "#f59e0b"
         }
       ],
       "signals": [
         {
-          "icon": "💡",
-          "text": "High motivation due to relocation"
+          "icon": "🎯",
+          "text": "Clear goals"
         },
         {
-          "icon": "🎯",
-          "text": "Clear goal to integrate into local culture"
+          "icon": "📅",
+          "text": "Regular schedule"
         }
       ]
     },
     "motivation": {
-      "goals": "Daniel wants to learn Spanish to integrate into Barcelona's culture and communicate effectively.",
-      "type": "Personal",
-      "timeline": "3–6 months",
+      "goals": "Daniel wants to learn Spanish to enhance his career opportunities.",
+      "type": "Career",
+      "timeline": "6-12 months",
       "urgency": "Medium",
       "tags": [
         {
-          "icon": "🏠",
-          "label": "Relocation"
+          "icon": "💼",
+          "label": "Career"
         },
         {
-          "icon": "🌍",
-          "label": "Cultural Integration"
+          "icon": "⏳",
+          "label": "Medium Urgency"
         }
       ]
     },
     "sentiment": {
-      "overall": "Positive",
-      "engagement": "High",
+      "overall": "Neutral",
+      "engagement": "Low",
       "signals": [
         {
-          "label": "Happiness",
-          "value": 84,
-          "icon": "😊"
+          "label": "Focus",
+          "value": 20,
+          "icon": "🎯"
         },
         {
           "label": "Engagement",
-          "value": 80,
-          "icon": "🎧"
+          "value": 30,
+          "icon": "👥"
         },
         {
-          "label": "Motivation",
-          "value": 75,
-          "icon": "🔥"
+          "label": "Clarity",
+          "value": 50,
+          "icon": "🔍"
         }
       ],
-      "notes": "Daniel is highly motivated to learn Spanish due to his recent move to Barcelona. He shows a positive attitude and eagerness to engage in conversation practice."
+      "notes": "Daniel seemed distracted during the session, possibly due to other commitments. He needs encouragement to focus on his language goals."
     },
     "tutorBrief": {
       "suggestedFocus": [
         {
-          "icon": "🔤",
-          "text": "Basic grammar structures"
-        },
-        {
-          "icon": "💬",
-          "text": "Conversational phrases"
-        },
-        {
           "icon": "🎙️",
           "text": "Speaking practice"
+        },
+        {
+          "icon": "👂",
+          "text": "Listening exercises"
         }
       ],
-      "icebreaker": "Discuss favorite places in Barcelona and practice related vocabulary.",
-      "watchOut": "Daniel might repeat phrases when unsure; encourage variety in responses.",
-      "aiSummary": "Daniel is an enthusiastic learner who recently moved to Barcelona. He is motivated to improve his Spanish to better integrate into the local culture. Focus on building his conversational skills and vocabulary related to everyday situations."
+      "icebreaker": "Discuss Daniel's career aspirations and how Spanish can help.",
+      "watchOut": "Daniel might be distracted by other tasks, so keep sessions engaging.",
+      "aiSummary": "Daniel is an English speaker aiming to learn Spanish, primarily for career advancement. His current engagement is low, possibly due to external distractions. Focus on interactive and practical exercises to maintain his interest."
     }
   }
 }
