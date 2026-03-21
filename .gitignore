@@ -1,5 +1,4 @@
 # Cloned tool repos (infrastructure, not our code)
-vendor/
 
 # Environment / secrets
 .env

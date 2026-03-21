@@ -1,26 +1,31 @@
 {
   "student": {
-    "name": "Student",
+    "name": "Daniel",
     "nativeLanguage": "English",
-    "targetLanguage": "Polish",
+    "targetLanguage": "Spanish",
     "onboardedAt": "Mar 21, 2026",
-    "badges": []
+    "badges": [
+      {
+        "icon": "🌟",
+        "label": "New Learner"
+      }
+    ]
   },
   "preferences": {
     "goals": {
-      "goal": "Personal Enrichment",
-      "inspiration": "Cultural Interest",
-      "topicFocus": "Basic Polish",
-      "timeline": "3-6 months"
+      "goal": "Cultural Integration",
+      "inspiration": "Relocation",
+      "topicFocus": "Conversational Spanish",
+      "timeline": "3–6 months"
     },
     "tutor": {
-      "country": "Poland",
+      "country": "Spain",
       "otherLanguages": [
         "English"
       ],
       "teachingStyle": [
-        "Supportive",
-        "Patient",
+        "Encouraging",
+        "Conversational",
         "Structured"
       ]
     },
@@ -50,8 +55,8 @@
           "Afternoon"
         ]
       },
-      "budget": "$15-25 / lesson",
-      "lessonsPerWeek": 2,
+      "budget": "$15–25 / lesson",
+      "lessonsPerWeek": 3,
       "sessionDuration": "60 min"
     }
   },
@@ -68,7 +73,7 @@
       {
         "name": "Listening",
         "icon": "👂",
-        "level": "Intermediate",
+        "level": "Beginner",
         "score": 50,
         "color": "#d63d85"
       },
@@ -89,34 +94,38 @@
     ],
     "strengths": [
       {
-        "icon": "👂",
-        "text": "Good listening comprehension"
+        "icon": "😊",
+        "text": "Positive attitude"
+      },
+      {
+        "icon": "🔥",
+        "text": "High motivation"
       }
     ],
     "improvements": [
       {
-        "icon": "🎙️",
-        "text": "Improve speaking fluency"
+        "icon": "🔤",
+        "text": "Expand vocabulary"
       },
       {
-        "icon": "🔤",
-        "text": "Enhance grammar accuracy"
+        "icon": "🎙️",
+        "text": "Increase speaking practice"
       }
     ]
   },
   "motivation": {
-    "quote": "I want to learn Polish to connect more with its culture and maybe travel there someday.",
+    "quote": "I want to learn Spanish because I recently moved to Barcelona and want to integrate into the local culture.",
     "tags": [
       {
-        "icon": "🌍",
-        "label": "Cultural Interest"
+        "icon": "🏠",
+        "label": "Relocation"
       },
       {
-        "icon": "✈️",
-        "label": "Travel"
+        "icon": "🌍",
+        "label": "Cultural Integration"
       }
     ],
-    "timeline": "3-6 months",
+    "timeline": "3–6 months",
     "urgency": "Medium",
     "type": "Personal"
   },
@@ -124,30 +133,30 @@
     "count": 3,
     "tutors": [
       {
-        "name": "Anna K.",
-        "country": "🇵🇱 Poland",
+        "name": "Maria G.",
+        "country": "🇪🇸 Spain",
         "rating": 4.8,
         "reviews": 120,
         "price": "$20",
-        "specialty": "Conversational Polish",
+        "specialty": "Conversational Spanish",
         "speaksLanguage": "English"
       },
       {
-        "name": "Jakub S.",
-        "country": "🇵🇱 Poland",
+        "name": "Carlos R.",
+        "country": "🇪🇸 Spain",
         "rating": 4.7,
         "reviews": 98,
         "price": "$18",
-        "specialty": "Beginner Polish",
+        "specialty": "Beginner Spanish",
         "speaksLanguage": "English"
       },
       {
-        "name": "Marta Z.",
-        "country": "🇵🇱 Poland",
+        "name": "Ana L.",
+        "country": "🇪🇸 Spain",
         "rating": 4.9,
         "reviews": 150,
         "price": "$22",
-        "specialty": "Polish for Travelers",
+        "specialty": "Cultural Integration",
         "speaksLanguage": "English"
       }
     ]

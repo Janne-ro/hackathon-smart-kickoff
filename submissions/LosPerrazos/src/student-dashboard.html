@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Smart Onboard — Your Learning Profile</title>
+  <title>Smart Kickoff — Your Learning Profile</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -462,7 +462,7 @@
 <nav>
   <a class="nav-logo" href="#">
     <div class="nav-logo-dot">P</div>
-    Smart Onboard
+    Smart Kickoff
   </a>
   <span class="nav-title">Your Learning Profile</span>
 </nav>
@@ -756,7 +756,7 @@
   function renderCTA(match) {
     document.getElementById('ctaSection').innerHTML = `
       <div class="cta-eyebrow">You are ready</div>
-      <button class="cta-btn" onclick="alert('Opening Preply with your filters pre-applied...')">
+      <button class="cta-btn" onclick="window.location.href='dashboard.html'">
         Find My Professor &rarr;
       </button>
       <div class="cta-sub">${match.count} tutors matched &middot; All filters pre-applied from your profile</div>

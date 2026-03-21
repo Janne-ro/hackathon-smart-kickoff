@@ -379,6 +379,43 @@
     }
 
     .modal-close:hover { color: #333; }
+
+    /* ── PROCESSING OVERLAY ── */
+    .processing-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(255,255,255,0.92);
+      z-index: 2000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .processing-overlay h2 {
+      font-size: 24px;
+      font-weight: 800;
+      color: #1a1a1a;
+    }
+
+    .processing-overlay p {
+      font-size: 15px;
+      color: #555;
+    }
+
+    .spinner {
+      width: 48px;
+      height: 48px;
+      border: 4px solid #e0e0e0;
+      border-top-color: #f0508a;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
   </style>
 </head>
 <body>
@@ -516,7 +553,7 @@
       <div class="modal-badge">New</div>
       <h2>AI Assessment available!</h2>
       <p>Find out your current language level with our new AI-powered assessment. It only takes a few minutes.</p>
-      <a href="student-dashboard.html" class="modal-cta">
+      <a href="#" class="modal-cta" onclick="startAssessment(); return false;">
         Start assessment
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
           <path d="M3.5 9h11M10 4.5l4.5 4.5L10 13.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -524,6 +561,13 @@
       </a>
       <button class="modal-dismiss" onclick="closeModal()">Maybe later</button>
     </div>
+  </div>
+
+  <!-- Processing overlay (hidden by default) -->
+  <div class="processing-overlay" id="processingOverlay" style="display:none">
+    <div class="spinner"></div>
+    <h2>Generating your learning profile...</h2>
+    <p>Our AI is analyzing your conversation to create a personalized learning plan.</p>
   </div>
 
   <script>
@@ -539,7 +583,126 @@
       if (e.target === this) closeModal();
     });
 
-    setTimeout(openModal, 5000);
+    function startAssessment() {
+      var prompt = [
+        "You are a warm, friendly AI kickoff agent for Preply. You guide a short structured conversation.",
+        "You have a specific flow to follow. Be natural and conversational but stay on track.",
+        "Keep each response to 1-2 short sentences. Never give long answers.",
+        "",
+        "YOUR CONVERSATION FLOW:",
+        "",
+        "1. LANGUAGE CHOICE (you already asked in your greeting):",
+        "   Once the student tells you which language they want to learn, acknowledge it warmly.",
+        "   Then ask them what their motivation is for learning that language.",
+        "   Do not ask any other questions at this point.",
+        "",
+        "2. MOTIVATION:",
+        "   Once the student shares their motivation, acknowledge it briefly (a few words is enough).",
+        "   Then propose trying out the target language together — something like",
+        "   \"Want to try switching to [language] for a bit?\"",
+        "   Do not ask any other questions. Do not offer tips or resources.",
+        "",
+        "3. HOBBIES IN TARGET LANGUAGE:",
+        "   Once the student agrees to switch, immediately speak in the target language for the next question.",
+        "   Immediately ask them what they like to do in their free time. This is the ONLY question to ask.",
+        "   Do not ask what they want to learn, do not teach vocabulary, do not suggest topics.",
+        "   ONLY ask about their hobbies/free time, in the target language. Do not ask any follow-up questions.",
+        "",
+        "4. WRAP UP:",
+        "   Immediately after the student answers about their hobbies, switch back to English and wrap up the conversation with:",
+        "   \"It was great to meet you! You're ready to start your learning journey and see your baseline — exciting!\"",
+        "   This is the end. Do not ask more questions.",
+        "",
+        "IMPORTANT GUARDRAILS:",
+        "- Follow steps 1 → 2 → 3 → 4 in order. Never skip ahead, never go back.",
+        "- Only ask the ONE question specified at each step. No bonus questions.",
+        "- If the student goes off-topic or asks you something, respond in a few friendly words and steer back to the current step.",
+        "- After wrapping up, if the student keeps talking, just say: \"Go ahead and click End Call to see your results!\"",
+        "- Never mention assessment, scoring, or analysis.",
+        "- Use beginner-friendly words when speaking the target language."
+      ].join("\n");
+
+      var greeting = "Hello! I'm your AI kickoff agent — here to help you kickstart your learning journey before connecting you with real teachers around the world! Which language would you like to learn?";
+
+      var returnUrl = window.location.origin + "/preply-clone.html?completed=true";
+      var params = new URLSearchParams({
+        profile: "THYMIA",
+        autoconnect: "true",
+        prompt: prompt,
+        greeting: greeting,
+        returnurl: returnUrl
+      });
+      window.location.href = "http://localhost:8084/?" + params.toString();
+    }
+
+    // ── Post-call processing ──
+    // Flow: video client redirects here with ?completed=true&channel=XXXX
+    // We fetch the session report directly from the custom LLM server using the channel name,
+    // then POST it to /generate-dashboards to create the dashboard JSON files.
+    window.addEventListener("DOMContentLoaded", function() {
+      var params = new URLSearchParams(window.location.search);
+      if (params.get("completed") !== "true") {
+        setTimeout(openModal, 5000);
+        return;
+      }
+
+      var channel = params.get("channel");
+      if (!channel) {
+        alert("No channel information. Please try the assessment again.");
+        window.location.href = "preply-clone.html";
+        return;
+      }
+
+      // Show processing overlay
+      document.getElementById("processingOverlay").style.display = "flex";
+
+      var reportUrl = "http://localhost:8100/session-reports/latest/" + encodeURIComponent(channel);
+
+      // Poll for the session report (the unregister/report-generation may still be in progress)
+      var attempt = 0;
+      var maxAttempts = 10;
+
+      function pollForReport() {
+        attempt++;
+        fetch(reportUrl)
+          .then(function(res) {
+            if (res.ok) return res.json();
+            throw new Error("not_ready");
+          })
+          .then(function(report) {
+            console.log("[PostCall] Got session report:", report.id);
+            // Now generate dashboards
+            return fetch("http://localhost:8100/generate-dashboards", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(report)
+            });
+          })
+          .then(function(res) { return res.json(); })
+          .then(function(data) {
+            if (data.success) {
+              window.location.href = "student-dashboard.html";
+            } else {
+              throw new Error(data.error || "Dashboard generation failed");
+            }
+          })
+          .catch(function(err) {
+            if (err.message === "not_ready" && attempt < maxAttempts) {
+              console.log("[PostCall] Report not ready, retry " + attempt + "/" + maxAttempts);
+              setTimeout(pollForReport, 2000);
+            } else {
+              console.error("Post-call processing error:", err);
+              document.getElementById("processingOverlay").innerHTML =
+                '<h2>Something went wrong</h2>' +
+                '<p>' + (err.message === "not_ready" ? "Session report not available yet." : err.message) + '</p>' +
+                '<a href="student-dashboard.html" class="modal-cta" style="max-width:300px">View dashboard anyway</a>';
+            }
+          });
+      }
+
+      // Start polling after a short initial delay
+      setTimeout(pollForReport, 2000);
+    });
   </script>
 
 </body>

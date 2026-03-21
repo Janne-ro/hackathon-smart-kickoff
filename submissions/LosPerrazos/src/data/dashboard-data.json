@@ -1,37 +1,42 @@
 {
   "student": {
-    "name": "Student",
-    "initials": "ST",
+    "name": "Daniel",
+    "initials": "DA",
     "nativeLanguage": "English",
-    "targetLanguage": "Polish",
+    "targetLanguage": "Spanish",
     "onboardedAt": "Mar 21, 2026",
-    "badges": [],
+    "badges": [
+      {
+        "icon": "🌟",
+        "label": "New Learner"
+      }
+    ],
     "skills": [
       {
         "name": "Speaking",
         "score": 40,
-        "cefr": "A2",
+        "cefr": "A1",
         "icon": "🎙️",
         "color": "#ff5ba4"
       },
       {
         "name": "Listening",
         "score": 50,
-        "cefr": "B1",
+        "cefr": "A1",
         "icon": "👂",
         "color": "#d63d85"
       },
       {
         "name": "Vocabulary",
         "score": 45,
-        "cefr": "A2",
+        "cefr": "A1",
         "icon": "💬",
         "color": "#3b82f6"
       },
       {
         "name": "Grammar",
         "score": 40,
-        "cefr": "A2",
+        "cefr": "A1",
         "icon": "🔤",
         "color": "#f59e0b"
       }
@@ -39,87 +44,91 @@
   },
   "onboarding": {
     "retention": {
-      "label": "Medium",
+      "label": "High",
       "timeline": [
         {
           "label": "After 1st Class",
-          "score": 70,
+          "score": 90,
           "color": "#10b981"
         },
         {
           "label": "After 1 Week",
-          "score": 60,
+          "score": 85,
           "color": "#ff5ba4"
         },
         {
           "label": "After 1 Month",
-          "score": 50,
+          "score": 80,
           "color": "#f59e0b"
         }
       ],
       "signals": [
         {
-          "icon": "📈",
-          "text": "Moderate engagement with language learning"
+          "icon": "💡",
+          "text": "High motivation due to relocation"
         },
         {
           "icon": "🎯",
-          "text": "Clear goal to learn Polish"
+          "text": "Clear goal to integrate into local culture"
         }
       ]
     },
     "motivation": {
-      "goals": "The student wants to improve their Polish for personal reasons, possibly related to cultural interest or travel.",
+      "goals": "Daniel wants to learn Spanish to integrate into Barcelona's culture and communicate effectively.",
       "type": "Personal",
-      "timeline": "3-6 months",
+      "timeline": "3–6 months",
       "urgency": "Medium",
       "tags": [
         {
-          "icon": "🌍",
-          "label": "Cultural Interest"
+          "icon": "🏠",
+          "label": "Relocation"
         },
         {
-          "icon": "✈️",
-          "label": "Travel"
+          "icon": "🌍",
+          "label": "Cultural Integration"
         }
       ]
     },
     "sentiment": {
-      "overall": "Mixed",
-      "engagement": "Medium",
+      "overall": "Positive",
+      "engagement": "High",
       "signals": [
         {
-          "label": "Frustration",
-          "value": 70,
-          "icon": "😟"
+          "label": "Happiness",
+          "value": 84,
+          "icon": "😊"
         },
         {
-          "label": "Confusion",
-          "value": 60,
-          "icon": "🤔"
+          "label": "Engagement",
+          "value": 80,
+          "icon": "🎧"
         },
         {
-          "label": "Surprise",
-          "value": 50,
-          "icon": "😲"
+          "label": "Motivation",
+          "value": 75,
+          "icon": "🔥"
         }
       ],
-      "notes": "The student expressed significant frustration and confusion during the session, indicating a need for supportive and patient guidance."
+      "notes": "Daniel is highly motivated to learn Spanish due to his recent move to Barcelona. He shows a positive attitude and eagerness to engage in conversation practice."
     },
     "tutorBrief": {
       "suggestedFocus": [
         {
           "icon": "🔤",
-          "text": "Focus on basic grammar structures"
+          "text": "Basic grammar structures"
         },
         {
           "icon": "💬",
-          "text": "Expand vocabulary related to everyday situations"
+          "text": "Conversational phrases"
+        },
+        {
+          "icon": "🎙️",
+          "text": "Speaking practice"
         }
       ],
-      "icebreaker": "Ask about the student's favorite Polish cultural aspects or places they wish to visit.",
-      "watchOut": "The student may become easily frustrated with complex explanations; keep instructions simple and clear.",
-      "aiSummary": "The student is learning Polish, likely for personal enrichment or travel. They expressed frustration and confusion, suggesting they may need a supportive and patient approach. They have a moderate level of engagement and motivation, with a medium urgency to progress."
+      "icebreaker": "Discuss favorite places in Barcelona and practice related vocabulary.",
+      "watchOut": "Daniel might repeat phrases when unsure; encourage variety in responses.",
+      "aiSummary": "Daniel is an enthusiastic learner who recently moved to Barcelona. He is motivated to improve his Spanish to better integrate into the local culture. Focus on building his conversational skills and vocabulary related to everyday situations."
     }
   }
 }
