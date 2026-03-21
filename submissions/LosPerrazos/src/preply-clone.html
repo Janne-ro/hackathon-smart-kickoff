@@ -282,6 +282,103 @@
       color: #888;
       font-weight: 400;
     }
+
+    /* ── MODAL ── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal {
+      background: #fff;
+      border-radius: 16px;
+      padding: 40px 36px 32px;
+      max-width: 420px;
+      width: 90%;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.22);
+      text-align: center;
+      position: relative;
+    }
+
+    .modal-badge {
+      display: inline-block;
+      background: #f0508a;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 100px;
+      margin-bottom: 18px;
+    }
+
+    .modal h2 {
+      font-size: 26px;
+      font-weight: 800;
+      color: #1a1a1a;
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    .modal p {
+      font-size: 15px;
+      color: #555;
+      margin-bottom: 28px;
+      line-height: 1.5;
+    }
+
+    .modal-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #1a1a1a;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 14px 24px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      text-decoration: none;
+      transition: opacity 0.15s;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .modal-cta:hover { opacity: 0.85; }
+
+    .modal-dismiss {
+      margin-top: 14px;
+      background: none;
+      border: none;
+      font-size: 14px;
+      color: #888;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .modal-dismiss:hover { color: #333; }
+
+    .modal-close {
+      position: absolute;
+      top: 14px;
+      right: 16px;
+      background: none;
+      border: none;
+      font-size: 20px;
+      color: #aaa;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    .modal-close:hover { color: #333; }
   </style>
 </head>
 <body>
@@ -389,21 +486,21 @@
 
   <!-- SUBJECTS -->
   <section class="subjects">
-    <a href="#" class="subject-card">
+    <a href="#" class="subject-card" onclick="openModal(); return false;">
       <div class="subject-left">
         <span class="subject-icon">&#127981;</span>
         <span class="subject-name">English tutors</span>
       </div>
       <span class="subject-arrow">&#8250;</span>
     </a>
-    <a href="#" class="subject-card">
+    <a href="#" class="subject-card" onclick="openModal(); return false;">
       <div class="subject-left">
         <span class="subject-icon">&#128483;</span>
         <span class="subject-name">Spanish tutors</span>
       </div>
       <span class="subject-arrow">&#8250;</span>
     </a>
-    <a href="#" class="subject-card">
+    <a href="#" class="subject-card" onclick="openModal(); return false;">
       <div class="subject-left">
         <span class="subject-icon">&#128508;</span>
         <span class="subject-name">French tutors</span>
@@ -411,6 +508,39 @@
       <span class="subject-arrow">&#8250;</span>
     </a>
   </section>
+
+  <!-- MODAL -->
+  <div class="modal-overlay" id="assessmentModal" style="display:none">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
+      <div class="modal-badge">New</div>
+      <h2>AI Assessment available!</h2>
+      <p>Find out your current language level with our new AI-powered assessment. It only takes a few minutes.</p>
+      <a href="student-dashboard.html" class="modal-cta">
+        Start assessment
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <path d="M3.5 9h11M10 4.5l4.5 4.5L10 13.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <button class="modal-dismiss" onclick="closeModal()">Maybe later</button>
+    </div>
+  </div>
+
+  <script>
+    function openModal() {
+      document.getElementById('assessmentModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('assessmentModal').style.display = 'none';
+    }
+
+    document.getElementById('assessmentModal').addEventListener('click', function(e) {
+      if (e.target === this) closeModal();
+    });
+
+    setTimeout(openModal, 5000);
+  </script>
 
 </body>
 </html>
