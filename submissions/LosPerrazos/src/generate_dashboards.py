@@ -257,7 +257,7 @@ for the student dashboard — exactly matching the required schema.
 
 Guidelines:
 - Infer the student's name, native language, and target language from the transcript.
-  If the name is unclear use "Student".
+  If the name is unclear use "Daniel".
 - Use biomarkers to inform sentiment, stress, and engagement scores.
   Map distress (0–1) → a 0–100 inverse engagement score, stress (0–1) → urgency, etc.
 - Skill scores should reflect actual conversation quality (vocabulary range,
