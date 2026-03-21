@@ -57,5 +57,5 @@ We used a **combination of manual testing and AI-assisted debugging**, which all
 
 There were mainly two challenges to the development with AI: 
 
-* At one point AI suggested to modify files in the Thymia repo. However we wanted to be able to run the code independently of local changes made to the repository. So to pivot we reiterated on the prompt and overall approach to make it more resilient to make our code more robust and modularly independent. 
+* At one point AI suggested to modify files in the Thymia repository. However we wanted to be able to run the code independently of local changes made to the repository. So to pivot we reiterated on the prompt and overall approach to make it more resilient to make our code more robust and modularly independent. 
 * Early on, we sometimes overused AI-generated code without fully understanding it, which made debugging difficult. We addressed this by being more intentional with prompts and verifying outputs step by step while focusing on code understanding. Additionally we incorporatied manual checks. This greatly strengthened our understanding of the underlying conceptual code logic which helped us a lot in debugging effectivly.
