@@ -184,7 +184,8 @@ submissions/
 │   ├── HOW_WE_BUILT.md    # Documentation of our AI development process
 │   └── README.md          # Description of our project
 ```
- 
+
+---
 
 ## How to run
 
