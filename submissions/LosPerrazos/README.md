@@ -179,7 +179,8 @@ The following APIs are used in this project:
 submissions/
 ├── team-name/
 │   ├── docs/              # Additional documentation and images
-│   ├── src/               # The source code to our feature
+│   ├── patches/           # Customization hooks of other repos
+|   ├── src/               # The source code to our feature
 │   ├── demo.mp4           # A short demo video from a students perspective
 │   ├── HOW_WE_BUILT.md    # Documentation of our AI development process
 │   └── README.md          # Description of our project
