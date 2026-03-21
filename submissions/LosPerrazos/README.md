@@ -185,3 +185,20 @@ submissions/
 │   └── README.md          # Description of our project
 ```
  
+
+## How to run
+
+Run the follwing command in your terminal to start the demo:
+
+**For MacOS and Linux**:
+```
+cd submissions/LosPerrazos/src/
+python -m http.server 8080 & open http://localhost:8080/preply-clone.html
+```
+
+**For Windows**:
+```
+cd submissions/LosPerrazos/src/
+Start-Process python -ArgumentList "-m http.server 8080"
+Start-Process http://localhost:8080/preply-clone.html
+```
