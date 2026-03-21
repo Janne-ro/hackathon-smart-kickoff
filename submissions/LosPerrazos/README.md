@@ -1,10 +1,10 @@
-# Smart Onboard
+# Smooth Onboard
 
 Smarter starts for better learning journeys.
 
 ## Overview
 
-Smart Onboard is an AI-powered onboarding assistant that assesses student skill level, predicts retention, and enables personalized learning before the first lesson.
+Smooth Onboard is an AI-powered onboarding assistant that assesses student skill level, predicts retention, and enables personalized learning before the first lesson.
 
 Instead of static forms, learners interact with an AI agent that gathers insights through conversation, combining responses, sentiment, and behavioral signals into actionable outputs.
 
@@ -127,7 +127,10 @@ We already collect most of this data during onboarding, this approach enhances i
 
 ### Used APIs
 The following APIs are used in this project:
-* Lorem ipsum
+* **Anam**: Simulating a lifelike human AI avatar to engage users and offer a familiar experience. 
+* **Agora**: Decreasing latency via routing traffic through Agoras WebRTC to make the interaction smoother and more realistic. 
+* **Thymia**: Real-time analysis of human-AI interaction via sentiment analysis to reliably predict retainment scores.
+* **OpenAI**: Transforming speech-to-text and translating data from the human-AI onboarding call into tangible dashboard data.
 
 ### File Structure
 
